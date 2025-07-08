@@ -91,3 +91,18 @@ body {
 .slide-in-left {
   animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+@keyframes slide-in-short {
+      0% {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(100%);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-in-short {
+      animation: slide-in-short 20s linear ;
+    }

@@ -48,7 +48,7 @@ export default function EventsPage() {
         <div className="w-1/3">
           <h1 className="text-6xl font-bold text-blue-400 mb-8">EVENTS</h1>
           <h2 className="text-3xl font-extrabold mb-4">{selectedEvent.title}</h2>
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 mr-0">
             {events.map((event) => (
               <button
                 key={event.id}
@@ -67,7 +67,7 @@ export default function EventsPage() {
         </div>
 
         {/* Right side */}
-        <div className="w-2/3 pl-16 flex flex-col items-center">
+        <div className="w-2/3 pl-16 flex flex-col justify-center">
           <p className="text-lg leading-relaxed max-w-2xl">
             {selectedEvent.description}
           </p>

@@ -4,7 +4,7 @@ import AboutSection from "./components/AboutSection";
 import OurMotto from "./components/OurMottoSection";
 import VisionSection from "./components/OurVisionSection";
 import Partnership from "./components/EcellPartnership";
-import EventsPage from "./EventsSections";
+import EventsPage from "./components/EventsSections";
 
 export default function Home() {
   return (

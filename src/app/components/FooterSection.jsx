@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="ml-[5vw]">
           <h3 className="text-xl font-bold mb-4">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Collaborations</a></li>
+            <li><a href="#" className="hover:animate-slide-in-short">Collaborations</a></li>
             <li><a href="#" className="hover:underline">Team</a></li>
             <li><a href="#" className="hover:underline">CA Programme</a></li>
             <li><a href="#" className="hover:underline">E-Summit</a></li>
