@@ -6,6 +6,7 @@ import VisionSection from "./components/OurVisionSection";
 import Partnership from "./components/EcellPartnership";
 import EventsPage from "./components/EventsSections";
 import PreviousSpeakers from "./components/Speakers";
+import Collaborators from "./components/Collaborations";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
     <Partnership />
     {/* <EventsPage /> */}
     <PreviousSpeakers />
+    <Collaborators />
     </>
     
   );

@@ -13,57 +13,57 @@ export default function PreviousSpeakers(){
         {
             name : "DEVVRAT ARYA",
             title : "VP of Technology, Pepperfry",
-            img : "/DEVVRATARYA.webp"
+            img : "/Speakers/DEVVRATARYA.webp"
         },
         {
             name:"AKHIL GUPTA",
             title:"Founder, Nobroker",
-            img: "/AKHILGUPTA.webp"
+            img: "/Speakers/AKHILGUPTA.webp"
         },
         {
             name:"PANKAJ AGARWAL",
             title:"Founder and CEO, Taghive",
-            img:"/PANKAJAGARWAL.webp"
+            img:"/Speakers/PANKAJAGARWAL.webp"
         },
         {
             name:"TAPAN MISHRA",
             title:"Former Director, Space Applications Center ISRO",
-            img:"/TAPANMISHRA.webp"
+            img:"/Speakers/TAPANMISHRA.webp"
         },
         {
             name:"TN HARI", 
             title:"HR Head, BigBasket",
-            img:"/TNHARI.webp"
+            img:"/Speakers/TNHARI.webp"
         },
         {
             name:"DR. ONKAR ROI",
             title:"Director General, STPI",
-            img:"/DR.ONKARROI.webp"
+            img:"/Speakers/DR.ONKARROI.webp"
         },
         {
             name:"BHAGWAN CHOWDARY",
             title:"Professor of Finance, ISB",
-            img:"/BHAGWANCHOWDARY.webp"
+            img:"/Speakers/BHAGWANCHOWDARY.webp"
         },
         {
             name:"SHASHANK RANDEV",
             title:"Founder VC, 100X.VC",
-            img:"/SHASHANKRANDEV.webp"
+            img:"/Speakers/SHASHANKRANDEV.webp"
         },
         {
             name:"V. KRISHNA MOHAN",
             title:"Executive Director, Bharat Biotech",
-            img:"V.KRISHNAMOHAN.webp"
+            img:"/Speakers/V.KRISHNAMOHAN.webp"
         },
         {
             name:"SK JANA",
             title:"Director R&D and Manufacutring, Serum Institute",
-            img:"/SKJANA.webp"
+            img:"/Speakers/SKJANA.webp"
         },
         {
             name:"PADMA SRIVASTAVA",
             title:"Neurologist, AIMS",
-            img:"/PADMASRIVASTAVA.webp"
+            img:"/Speakers/PADMASRIVASTAVA.webp"
         }
     ]
 
