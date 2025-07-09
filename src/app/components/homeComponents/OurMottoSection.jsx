@@ -1,12 +1,12 @@
 // components/OurMottoSection.js
 
 import Card from "./card";
-import AnimatedSection from "./AnimatedSection";
+import AnimatedSection from "./animatedSection";
 
 export default function OurMottoSection() {
   return (
     <AnimatedSection className="w-full flex flex-col items-center mt-9">
-      <h2 className="text-2xl md:text-4xl font-bold mb-10">OUR MOTTO</h2>
+      <h2 className="text-2xl md:text-7xl font-bold mb-10">OUR MOTTO</h2>
       <div className="flex flex-col md:flex-row justify-center items-stretch gap-6">
         <Card
           src="/ourMotoThink.webp"

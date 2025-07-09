@@ -1,10 +1,10 @@
-import Caution from "./components/Caution";
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import OurMotto from "./components/OurMottoSection";
-import VisionSection from "./components/OurVisionSection";
-import Partnership from "./components/EcellPartnership";
-import EventsPage from "./components/EventsSections";
+import Caution from "./components/homeComponents/Caution";
+import HeroSection from "./components/homeComponents/HeroSection";
+import AboutSection from "./components/homeComponents/AboutSection";
+import OurMotto from "./components/homeComponents/OurMottoSection";
+import VisionSection from "./components/homeComponents/OurVisionSection";
+import Partnership from "./components/homeComponents/EcellPartnership";
+import EventsPage from "./components/homeComponents/EventsSections";
 
 export default function Home() {
   return (

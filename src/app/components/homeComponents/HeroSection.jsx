@@ -20,21 +20,21 @@ export default function HeroSection(){
             <div className="relative w-full h-screen"> 
             {/* Ecell Text */}
             <div className="absolute top-[40%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
-                <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl hidden lg:block animated-gradient-text">
+                <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl hidden lg:block animated-gradient-text">
                 ENTREPRENEURSHIP CELL
                 </h1>
-                <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl lg:hidden animated-gradient-text">
-                Ecell
+                <h1 className="text-white font-bold text-7xl md:text-6xl lg:hidden animated-gradient-text">
+                E-Cell
                 </h1>
             </div>
 
             {/* IIT H Text */}
             <div className="absolute top-[60%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
-                <h2 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">IIT HYDERABAD</h2>
+                <h2 className="text-white font-bold text-4xl sm:text-4xl md:text-5xl lg:text-7xl">IIT HYDERABAD</h2>
                 <div className="flex flex-row justify-center mt-[10vh]">
-                <span className="text-white font-extralight text-xl sm:text-xl md:text-2xl lg:text-3xl">THINK</span>
-                <span className="text-white font-extralight text-xl sm:text-xl md:text-2xl lg:text-3xl pl-4">| BUILD</span>
-                <span className="text-white font-extralight text-xl sm:text-xl md:text-2xl lg:text-3xl pl-4">| INSPIRE</span>
+                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl">THINK</span>
+                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl pl-4">| BUILD</span>
+                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl pl-4">| INSPIRE</span>
                 </div>
             </div>
 
