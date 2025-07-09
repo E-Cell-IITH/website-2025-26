@@ -1,0 +1,85 @@
+
+.startup-container {
+  height: 100vh;
+  background-color: #121212;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.home-icon {
+  width: 28px;
+  height: 28px;
+  stroke: #ffffffcc;
+  transition: stroke 0.3s ease;
+}
+
+.home-button:hover .home-icon {
+  stroke: #ffffff;
+}
+
+.center-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.rolling-text {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00ffe0, #8e2de2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rollIn 3s ease-in-out infinite;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .rolling-text {
+    font-size: 2.5rem;
+  }
+
+  .home-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .home-button {
+    top: 15px;
+    right: 20px;
+  }
+}
+
+
+@keyframes rollIn {
+  0% {
+    opacity: 0;
+    transform: rotateY(90deg) scale(0.9);
+  }
+  30% {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1.05);
+  }
+  70% {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateY(-90deg) scale(0.9);
+  }
+}
