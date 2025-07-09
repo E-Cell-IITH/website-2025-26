@@ -16,25 +16,25 @@ const events = [
     id: "START-UP FAIR",
     title: "START-UP FAIR",
     description:
-      "Start-Up Fair connects budding entrepreneurs with investors and industry experts, creating a fertile ground for networking and funding opportunities.",
+      `An initiative to serve as a platform at IIT Hyderabad for bringing together budding entrepreneurs, venture capitalists, investors, and start-ups. It creates a networking hub for people from various domains by involving corporations, working professionals, and students of IIT Hyderabad and across the nation at our very own institute. We aim to promote entrepreneurial spirit among students of IIT Hyderabad with this event.`,
   },
   {
     id: "E-NETWORKING",
     title: "E-NETWORKING",
     description:
-      "E-Networking facilitates meaningful interactions among entrepreneurs, mentors, and professionals to foster collaboration and knowledge sharing.",
+      `We at E-Cell IIT Hyderabad firmly believe in growing together. E-Networking aims to provide a bridge to all the E-Cells in our country where they can communicate, learn and solve problems together. Currently, the E-Networking family consists of 52 E-Cells. The official meeting of all the member E-Cells is known as the E-Connect. In E-Connect, fellow E-Cell members can share their concerns, pitch initiatives, and help other E-Cells solve their problems.`,
   },
   {
     id: "POWER TALKS",
     title: "POWER TALKS & PANEL DISCUSSIONS",
     description:
-      "Engage with industry leaders through insightful power talks and panel discussions covering diverse entrepreneurial topics.",
+      `E-Summit brings a series of talks and panel discussions from the best minds in business and entrepreneurship, from the top-tier leagues, and question the most critical issues. We conduct power talk sessions by some of the most esteemed and experienced personalities of the field- ranging from entrepreneurs to influencers throughout the year. The sessions are interactive as well as entertaining.`,
   },
   {
     id: "CAMPUS AMBASSADOR",
     title: "CAMPUS AMBASSADOR PROGRAM",
     description:
-      "Join our Campus Ambassador Program to become the face of E-Cell at your institute and promote the spirit of entrepreneurship.",
+      `ECell of IIT Hyderabad hosts a Campus Ambassador program for students outside of IIT Hyderabad looking to inculcate entrepreneurial ideas within them and spread such ideas at their campus. This program usually starts around 1.5-2 months before the E-Summit. In 2022, we had around 800 Campus Ambassadors as a part of the ECell IIT Hyderabad family. Each CA has a chance to learn effective communication through engaging events and various tasks. You will be awarded points based on the events and games you complete. These points decide your position on the overall leaderboard. The toppers of the leaderboard win exciting prizes!`,
   },
 ];
 
@@ -47,13 +47,13 @@ export default function EventsPage() {
         {/* Left side */}
         <div className="w-1/3">
           <h1 className="text-6xl font-bold text-blue-400 mb-8">EVENTS</h1>
-          <h2 className="text-3xl font-extrabold mb-4">{selectedEvent.title}</h2>
+          <h2 className="text-3xl font-extrabold w-screen mb-4">{selectedEvent.title}</h2>
           <div className="flex flex-col space-y-4 mr-0">
             {events.map((event) => (
               <button
                 key={event.id}
                 onClick={() => setSelectedEvent(event)}
-                className={`text-xl px-4 py-2 rounded transition relative text-left
+                className={`text-xl pr-4 py-2 rounded transition relative text-left
                   ${
                     selectedEvent.id === event.id
                       ? "hover:cursor-pointer rounded-full"
@@ -67,8 +67,8 @@ export default function EventsPage() {
         </div>
 
         {/* Right side */}
-        <div className="w-2/3 pl-16 flex flex-col justify-center">
-          <p className="text-lg leading-relaxed max-w-2xl">
+        <div className="w-2/3 pt-[100px] pl-16 flex flex-col justify-center ">
+          <p className="text-lg leading-relaxed max-w-2xl animate-slide-in-left-limited">
             {selectedEvent.description}
           </p>
         </div>
