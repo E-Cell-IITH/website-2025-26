@@ -1,8 +1,31 @@
 @import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+
+.swiper-pagination-bullet {
+  background-color: #9ca3af !important; 
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6b7280 !important;
+}
 
 :root {
   --background: #ffffff;
   --foreground: black;
+}
+/* Make Swiper pagination dots grey by default */
+.swiper-pagination-bullet {
+  background-color: #9ca3af; /* Tailwind gray-400 */
+  opacity: 1; /* fully visible */
+}
+
+/* Make the active dot a darker grey */
+.swiper-pagination-bullet-active {
+  background-color: #6b7280; /* Tailwind gray-500 */
 }
 
 @theme inline {
@@ -22,7 +45,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica";
 }
 
 .extended-diagonal {
@@ -43,7 +66,8 @@ body {
     .animate-slide-in {
       animation: slide-in 20s linear infinite;
     }
-  @keyframes gradientAnimation {
+
+@keyframes gradientAnimation {
     0% {
       background-position: 0% 50%;
     }
@@ -63,7 +87,7 @@ body {
     animation: gradientAnimation 6s linear infinite;
   }
 
-  @keyframes slide-up {
+@keyframes slide-up {
   from {
     transform: translateY(100%);
     opacity: 0;
@@ -92,17 +116,30 @@ body {
   animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes slide-in-short {
-      0% {
-        transform: translateX(0%);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(100%);
-        opacity: 1;
-      }
-    }
+@keyframes slide-in-left-limited {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  100%{
+    transform:translateX(0);
+    opacity: 1;
+  }
+}
 
-    .animate-slide-in-short {
-      animation: slide-in-short 20s linear ;
-    }
+.animate-slide-in-left-limited {
+  animation:slide-in-left-limited 0.5s ease-in forwards;
+}
+
+@keyframes marquee {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee{
+  animation: marquee 20s linear infinite
+}
