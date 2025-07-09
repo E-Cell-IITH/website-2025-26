@@ -1,10 +1,10 @@
-import HeroSection from "@/app/components/founderhive/herosection";
-import Sessiontabs from "@/app/components/founderhive/sessiontabs";
-import UpcomingSessions from "@/app/components/founderhive/upcomingsessions";
-import StartupConcepts from "@/app/components/founderhive/Startupconcepts";
-import EventGallerySection from "@/app/components/founderhive/eventgallery";
-import FooterLine from "@/app/components/founderhive/Footerline";
-import Layout from "@/app/components/founderhive/Layout";
+import HeroSection from "@/components/founderhive/herosection";
+import Sessiontabs from "@/components/founderhive/sessiontabs";
+import UpcomingSessions from "@/components/founderhive/upcomingsessions";
+import StartupConcepts from "@/components/founderhive/Startupconcepts";
+import EventGallerySection from "@/components/founderhive/eventgallery";
+import FooterLine from "@/components/founderhive/Footerline";
+import Layout from "@/components/founderhive/Layout";
 export default function HomePage() {
   return (
     <Layout>
