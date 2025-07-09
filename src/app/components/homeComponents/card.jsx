@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Card(props) {
   return (
-    <div className="flex flex-col items-center text-center h-full max-w-7xl mx-auto px-4">
+    <div className="flex flex-col items-center text-center h-full max-w-7xl mx-auto px-4 animate-slide-in-limited">
       {/* Circle Image */}
       <div className="w-20 h-20 md:w-24 md:h-24 mb-4 relative">
         <Image
