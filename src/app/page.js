@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
     <Caution />
-    <HeroSection />
+    <HeroSection text = "ENTREPRENEURSHIP CELL"/>
     <AboutUs />
     <OurMottoSection />
     <VisionSection />
