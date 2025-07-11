@@ -10,12 +10,8 @@ import PreviousSpeakers from "../components/homeComponents/Speakers";
 export default function Home() {
   return (
     <>
-<<<<<<< HEAD
-    <HeroSection />
-=======
     <Caution />
-    <HeroSection text = "ENTREPRENEURSHIP CELL"/>
->>>>>>> 8a4241c (Added E-summit and the MUN pages)
+    <HeroSection />
     <AboutUs />
     <OurMottoSection />
     <VisionSection />
