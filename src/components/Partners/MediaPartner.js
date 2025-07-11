@@ -5,19 +5,19 @@ import Image from 'next/image';
 
 const sponsors = [
   {
-    title: 'Title Sponsor',
-    img: '/EcellLogo.png',
-    alt: 'Scient Logo',
+    
+    img: null,
+    alt: null,
   },
   
   {
-    img: '/EcellLogo.png'
+    img: null
   },
   {
-    img: '/EcellLogo.png'
+    img: null
   },
   {
-    img: '/EcellLogo.png'
+    img: null
   }
 ];
 
@@ -50,7 +50,7 @@ export default function MediaPartnerSection() {
           {sponsors.map((sponsor, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.05] transition-transform duration-300 ease-in-out flex items-center justify-center min-h-[200px] w-full max-w-xs"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.08] transition-transform duration-300 ease-in-out flex items-center justify-center min-h-[200px] w-full max-w-xs"
             >
               {sponsor.img ? (
                 <Image

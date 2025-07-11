@@ -4,48 +4,54 @@ import Image from 'next/image';
 
 const sponsors = [
   {
-    title: 'Title Sponsor',
-    img: '/EcellLogo.png',
-    alt: 'Scient Logo',
+   
+    img: null,
+    alt: null,
   },
-  // Add more sponsors here if needed
+  // Add more sponsors here
 ];
 
 export default function InternshipPartnerSection() {
   const sponsorCount = sponsors.length;
 
-  // Determine layout class based on count
   let layoutClass = '';
   if (sponsorCount === 1) {
     layoutClass = 'flex justify-center';
   } else if (sponsorCount === 2) {
-    layoutClass = 'flex justify-around flex-wrap gap-6';
+    layoutClass = 'grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center';
+  } else if (sponsorCount === 3) {
+    layoutClass = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center';
+  } else if (sponsorCount === 4) {
+    layoutClass = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 justify-items-center';
   } else {
-    layoutClass = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8';
+    layoutClass = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center';
   }
 
   return (
     <section className="w-full bg-black py-12 px-4 text-white">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4 tracking-wider">
           INTERNSHIP PARTNER
         </h2>
         <div className="w-24 h-[3px] bg-white mx-auto mb-10 rounded-full" />
 
-        <div className={layoutClass}>
+        <div className={`${layoutClass} w-full`}>
           {sponsors.map((sponsor, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.1] transition-all duration-300 ease-in-out flex items-center justify-center min-h-[200px] max-w-md w-full"
+              className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:scale-[1.08] w-full max-w-sm sm:max-w-[320px] md:max-w-[400px] p-4 sm:p-6 flex items-center justify-center"
             >
               {sponsor.img ? (
-                <Image
-                  src={sponsor.img}
-                  alt={sponsor.alt}
-                  width={300}
-                  height={100}
-                  className="object-contain"
-                />
+                <div className="w-full">
+                  <Image
+                    src={sponsor.img}
+                    alt={sponsor.alt}
+                    width={600}
+                    height={200}
+                    className="w-full h-auto object-contain"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 400px"
+                  />
+                </div>
               ) : (
                 <div className="w-full h-[100px] flex items-center justify-center text-gray-500 text-sm italic">
                   Image coming soon
