@@ -3,6 +3,7 @@ import ProfileCard from "./profileCard"
 export default function OC(){
     return (
         <div>
+            <h2>OVERALL COORDINATOR</h2>
             <ProfileCard 
                 name="Tim Cook"
                 role = "Overall Coordinator"

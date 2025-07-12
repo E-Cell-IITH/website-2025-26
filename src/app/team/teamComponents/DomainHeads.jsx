@@ -1,4 +1,4 @@
-import ProfileCard from "./teamComponents/profileCard";
+import ProfileCard from "./profileCard";
 
 export default function DomainHeads(){
     const domains = [
@@ -141,7 +141,7 @@ export default function DomainHeads(){
                   role={member.role}
                   photoSrc={member.photoSrc}
                   gmailAddress={member.gmailAddress}
-                  linkedInURL={member.linkedinURL}
+                  linkedinURL={member.linkedinURL}
                 />
               ))}
             </div>
