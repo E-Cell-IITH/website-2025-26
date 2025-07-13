@@ -61,12 +61,12 @@ export default function StartupGrid() {
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               ) : (
-                <span className="text-gray-400 text-sm">No Image</span>
+                <span className="text-black text-sm">No Image</span>
               )}
             </div>
             <div className="p-4 border-t">
-              <h3 className="text-xl font-semibold">{startup.name}</h3>
-              <p className="text-sm text-gray-600">{startup.founder}</p>
+              <h3 className="text-xl text-black font-semibold">{startup.name}</h3>
+              <p className="text-sm text-black">{startup.founder}</p>
             </div>
           </div>
         ))}
