@@ -1,3 +1,5 @@
+import AnimatedSection from "../homeComponents/animatedSection";
+
 export default function StartupConcepts() {
   const concepts = [
     {
@@ -10,6 +12,7 @@ export default function StartupConcepts() {
   ];
 
   return (
+    <AnimatedSection className="w-full flex flex-col items-center mt-9">
     <section className="px-4 py-16 md:py-24 ">
       <div className="max-w-6xl mx-auto text-center space-y-12">
         <h2 className="text-3xl md:text-5xl font-bold text-white">
@@ -35,5 +38,6 @@ export default function StartupConcepts() {
         </div>
       </div>
     </section>
+    </AnimatedSection>
   );
 }
