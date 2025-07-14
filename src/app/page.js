@@ -10,7 +10,7 @@ import PreviousSpeakers from "../components/homeComponents/Speakers";
 export default function Home() {
   return (
     <>
-    <HeroSection />
+    <HeroSection text="ENTREPRENEURSHIP CELL" />
     <AboutUs />
     <OurMottoSection />
     <VisionSection />

@@ -1,6 +1,8 @@
+import Caution from "./Caution"
 export default function HeroSection(props){
     return (
         <>
+        <Caution />
         <br />
         <br />
         <section className="relative h-screen w-full overflow-hidden">
