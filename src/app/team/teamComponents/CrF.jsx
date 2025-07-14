@@ -25,7 +25,7 @@ export default function CrF(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Corporate Relations & Finance"
+            sectionTitle="Corporate Relations & Finance Managers"
             members={members}
         />
     )

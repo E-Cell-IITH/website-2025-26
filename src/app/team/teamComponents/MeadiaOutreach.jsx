@@ -25,7 +25,7 @@ export default function MediaAndOutreach(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Media and Outreach"
+            sectionTitle="Media and Outreach Managers"
             members={members}
         />
     )

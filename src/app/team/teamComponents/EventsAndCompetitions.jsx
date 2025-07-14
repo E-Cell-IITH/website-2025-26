@@ -25,7 +25,7 @@ export default function EventsAndCompetitions(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="EventsAndCompetitions"
+            sectionTitle="EventsAndCompetitions Managers"
             members={members}
         />
     )

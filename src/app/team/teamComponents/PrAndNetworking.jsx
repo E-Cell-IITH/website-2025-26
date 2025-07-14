@@ -25,7 +25,7 @@ export default function PrN(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="PR & Networking"
+            sectionTitle="PR & Networking Managers"
             members={members}
         />
     )

@@ -25,7 +25,7 @@ export default function DesignAndCreatives(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Design And Creatives"
+            sectionTitle="Design And Creatives Managers"
             members={members}
         />
     )
