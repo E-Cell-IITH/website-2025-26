@@ -127,27 +127,39 @@ export default function DomainHeads(){
     ];
     return (
     <main className="min-h-screen bg-black text-white px-4 py-12">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">DOMAIN HEADS</h1>
+  <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
+    DOMAIN HEADS
+  </h1>
+  <div className="max-w-4xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+      {domains.map((domain) => (
+        <div
+          key={domain.domain}
+          className="flex flex-col items-center"
+        >
+          <h2 className="text-xl font-bold mb-4 text-center">
+            {domain.domain}
+          </h2>
 
-      <div className="flex flex-col gap-16 max-w-6xl mx-auto">
-        {domains.map((domain) => (
-          <div key={domain.domain} className="flex flex-col w-full">
-            <h2 className="text-2xl font-bold mb-6 text-center">{domain.domain}</h2>
-            <div className="flex flex-wrap justify-center gap-8">
-              {domain.members.map((member) => (
-                <ProfileCard
-                  key={member.name}
-                  name={member.name}
-                  role={member.role}
-                  photoSrc={member.photoSrc}
-                  gmailAddress={member.gmailAddress}
-                  linkedinURL={member.linkedinURL}
-                />
-              ))}
-            </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {domain.members.map((member) => (
+              <ProfileCard
+                key={member.name + member.role}
+                name={member.name}
+                photoSrc={member.photoSrc}
+                gmailAddress={member.gmailAddress}
+                linkedinURL={member.linkedinURL}
+              />
+            ))}
           </div>
-        ))}
-      </div>
-    </main>
+        </div>
+      ))}
+    </div>
+  </div>
+</main>
+
+
+
+
   );
 }

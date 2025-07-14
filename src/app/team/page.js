@@ -1,5 +1,5 @@
-import HeroSection from "../components/homeComponents/HeroSection"
-import Caution from "../components/homeComponents/Caution"
+import HeroSection from "./teamComponents/HeroSection"
+import Caution from "./teamComponents/Caution"
 import OC from "./teamComponents/OC"
 import DomainHeads from "./teamComponents/DomainHeads"
 import Operations from "./teamComponents/Operations"

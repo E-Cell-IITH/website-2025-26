@@ -5,8 +5,7 @@ import Image from "next/image";
 
 
 export default function ProfileCard({
-     name, 
-    role, 
+     name,  
     photoSrc, 
     gmailAddress,
     linkedinURL,
