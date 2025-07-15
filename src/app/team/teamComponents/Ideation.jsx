@@ -25,7 +25,7 @@ export default function Ideation(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Ideation Managers"
+            sectionTitle="Ideation"
             members={members}
         />
     )

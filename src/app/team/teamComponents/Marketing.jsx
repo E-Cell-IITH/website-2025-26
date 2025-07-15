@@ -25,7 +25,7 @@ export default function Marketing(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Marketing Managers"
+            sectionTitle="Marketing"
             members={members}
         />
     )
