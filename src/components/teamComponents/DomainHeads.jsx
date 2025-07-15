@@ -1,170 +1,45 @@
 import ProfileCard from "./profileCard";
 
-export default function DomainHeads(){
-    const domains = [
-        {
-            domain : "Operations",
-            members: [
-                {
-                    name:"Tim Cook",
-                    role:'Operations',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain:"Web",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'Web',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain:"Ideation",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'Ideation',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-                {
-                    name:"Tim Cook",
-                    role:"Ideation",
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                }
-            ],
-        },
-        {
-            domain:"Events & Competitions",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'Events & Competitions',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain:"Corporate Relations & Finance",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'Corporate Relations & Finance',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain : "Design and Creatives",
-            members : [
-                {
-                    name:"Tim Cook",
-                    role:'Design and Creatives',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain : "PR & Networking",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'PR & Networking',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-                {
-                    name:"Tim Cook",
-                    role:'PR & Networking',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain : "Media and Outreach",
-            members: [
-                {
-                    name:"Tim Cook",
-                    role:'Media and Outreach',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ],
-        },
-        {
-            domain : "Marketing",
-            members:[
-                {
-                    name:"Tim Cook",
-                    role:'Marketing',
-                    photoSrc:"/timCook.jpg",
-                    gmailAddress:"thisIsTimCooking@gmail.com",
-                    linkedinURL:"https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
-                },
-            ]
-        }
-    ];
-    return (
-     
-    <main className="min-h-screen bg-black text-white px-4 py-12">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
+export default function DomainHeads() {
+  const domains = [
+    { domain: "Operations", members: [/* ... */] },
+    { domain: "Web", members: [/* ... */] },
+    { domain: "Ideation", members: [/* ... */] },
+    { domain: "Events & Competitions", members: [/* ... */] },
+    { domain: "Corporate Relations & Finance", members: [/* ... */] },
+    { domain: "Design and Creatives", members: [/* ... */] },
+    { domain: "PR & Networking", members: [/* ... */] },
+    { domain: "Media and Outreach", members: [/* ... */] },
+    { domain: "Marketing", members: [/* ... */] },
+  ];
+
+  return (
+    <main className="bg-black text-white px-4 py-20">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
         DOMAIN HEADS
       </h1>
 
-      <div className="max-w-6xl mx-auto">
-        {/* 3 domains per row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {domains.map((domain) => (
-            <div
-              key={domain.domain}
-              className="flex flex-col p-4"
-            >
-              {/* Domain title */}
-              <h2 className="text-xl font-bold mb-4 text-center">
-                {domain.domain}
-              </h2>
-
-              {/* Members container: force side by side */}
-              <div className="flex flex-wrap justify-center items-center gap-4 w-full">
-                {domain.members.map((member) => (
-                  <ProfileCard
-                    key={member.name + member.role}
-                    name={member.name}
-                    photoSrc={member.photoSrc}
-                    gmailAddress={member.gmailAddress}
-                    linkedinURL={member.linkedinURL}
-                  />
-                ))}
-              </div>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        {domains.map((domain) => (
+          <div key={domain.domain} className="flex flex-col items-center px-4">
+            <h2 className="text-2xl font-semibold mb-6 text-center">
+              {domain.domain}
+            </h2>
+            <div className="flex flex-wrap justify-center gap-6">
+              {domain.members.map((member) => (
+                <ProfileCard
+                  key={member.name + member.role}
+                  name={member.name}
+                  photoSrc={member.photoSrc}
+                  gmailAddress={member.gmailAddress}
+                  linkedinURL={member.linkedinURL}
+                  large // <-- optional: used to enlarge photo inside ProfileCard
+                />
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </main>
-
-
-
-
   );
 }

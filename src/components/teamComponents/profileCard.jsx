@@ -1,52 +1,29 @@
-"use client";
-
-import { useState } from "react";
-import Image from "next/image";
-
 export default function ProfileCard({
   name,
   photoSrc,
   gmailAddress,
   linkedinURL,
+  large = false
 }) {
-  const [showOverlay, setShowOverlay] = useState(false);
-
-  const toggleOverlay = () => setShowOverlay(!showOverlay);
-
   return (
-    <div className="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[50%]">
-      <div
-        className="relative w-full h-64 overflow-hidden rounded-md"
-        onMouseEnter={() => setShowOverlay(true)}
-        onMouseLeave={() => setShowOverlay(false)}
-        onClick={toggleOverlay} // tap for mobile
+    <div className="flex flex-col items-center text-center space-y-2">
+      <img
+        src={photoSrc}
+        alt={name}
+        className={`rounded-full object-cover ${
+          large ? "w-40 h-40" : "w-32 h-32"
+        }`}
+      />
+      <h3 className="text-lg font-semibold">{name}</h3>
+      <p className="text-sm text-gray-400">{gmailAddress}</p>
+      <a
+        href={linkedinURL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 text-sm hover:underline"
       >
-        {/* Photo */}
-        <Image
-          src={photoSrc}
-          alt={name}
-          fill
-          className={`object-cover transition-opacity duration-300 ${
-            showOverlay ? "opacity-0" : "opacity-100"
-          }`}
-        />
-
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-blue-500 flex items-center justify-center gap-4 transition-opacity duration-300 ${
-            showOverlay ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <a href={`mailto:${gmailAddress}`} target="_blank" rel="noopener noreferrer">
-            <Image src="/gmaillogo.webp" alt="Gmail" width={40} height={40} />
-          </a>
-          <a href={linkedinURL} target="_blank" rel="noopener noreferrer">
-            <Image src="/linkedinlogo.webp" alt="LinkedIn" width={40} height={40} />
-          </a>
-        </div>
-      </div>
-
-      <h3 className="mt-4 text-lg font-bold">{name}</h3>
+        LinkedIn
+      </a>
     </div>
   );
 }
