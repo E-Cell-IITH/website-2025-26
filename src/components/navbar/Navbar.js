@@ -10,7 +10,7 @@ const navItems = [
   { label: 'FOUNDERS HIVE', href: '/foundershive' },
   { label: 'MUN', href: '/mun' },
   { label: 'PARTNERS', href: '/partners' },
-  { label: 'WORKSHOPS', href: '/workshops' },
+  // { label: 'WORKSHOPS', href: '/workshops' },
   { label: 'IITH STARTUPS', href: '/startups' },
 ];
 
