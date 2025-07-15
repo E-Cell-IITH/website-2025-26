@@ -5,6 +5,7 @@ import HeroSection from "../components/homeComponents/HeroSection";
 import OurMottoSection from "../components/homeComponents/OurMottoSection";
 import VisionSection from "../components/homeComponents/OurVisionSection";
 import PreviousSpeakers from "../components/homeComponents/Speakers";
+import EventsPage from "@/components/homeComponents/EventsSections";
 
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
     <OurMottoSection />
     <VisionSection />
     <Partnership />
-    {/* <EventsPage /> */}
+    <EventsPage />
     <PreviousSpeakers />
     <Collaborators />
     </>
