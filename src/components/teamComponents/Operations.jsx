@@ -25,7 +25,7 @@ export default function Operations(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Operations Managers"
+            sectionTitle="Operations"
             members={members}
         />
     )

@@ -1,17 +1,17 @@
-import HeroSection from "./teamComponents/HeroSection"
-import OC from "./teamComponents/OC"
-import DomainHeads from "./teamComponents/DomainHeads"
-import Operations from "./teamComponents/Operations"
-import Web from "./teamComponents/Web"
-import CrF from "./teamComponents/CrF"
-import MediaAndOutreach from "./teamComponents/MeadiaOutreach"
-import Ideation from "./teamComponents/Ideation"
-import DesignAndCreatives from "./teamComponents/DesignAndCreatives"
-import PrN from "./teamComponents/PrAndNetworking"
+import HeroSection from "../../components/teamComponents/HeroSection"
+import OC from "../../components/teamComponents/OC"
+import DomainHeads from "../../components/teamComponents/DomainHeads"
+import Operations from "../../components/teamComponents/Operations"
+import Web from "../../components/teamComponents/Web"
+import CrF from "../../components/teamComponents/CrF"
+import MediaAndOutreach from "../../components/teamComponents/MeadiaOutreach"
+import Ideation from "../../components/teamComponents/Ideation"
+import DesignAndCreatives from "../../components/teamComponents/DesignAndCreatives"
+import PrN from "../../components/teamComponents/PrAndNetworking"
 export default function TeamPage(){
     return (
         <>          
-            <HeroSection text="Team E-Cell" />
+            <HeroSection />
             <OC />
             <DomainHeads />
             <Operations />
