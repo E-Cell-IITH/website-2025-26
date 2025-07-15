@@ -1,11 +1,9 @@
-import HeroSection from "../components/homeComponents/HeroSection";
-import Caution from "../components/homeComponents/Caution";
+import MUNHeroSection from "@/components/mun/comingsoon";
 
 export default function MunPage(){
     return (
         <>
-            <Caution />
-            <HeroSection text="Comming Soon"/>
+            <MUNHeroSection/>
         </>
     )
 }
