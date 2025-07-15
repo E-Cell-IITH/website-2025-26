@@ -1,4 +1,4 @@
-export default function HeroSection(props) {
+export default function HeroSection() {
     return (
         <>
             <br />
@@ -28,8 +28,8 @@ export default function HeroSection(props) {
                         </h1>
 
                         {/* Shown below lg, fits in one line */}
-                        <h1 className="text-white font-bold text-[7vw] sm:text-[6vw] md:text-[5vw] lg:hidden whitespace-nowrap animated-gradient-text">
-                            E-Cell
+                        <h1 className="text-white font-bold text-[15vw] sm:text-[30px] md:text-[5vw] lg:hidden whitespace-nowrap animated-gradient-text">
+                            E-CELL
                         </h1>
                     </div>
 
