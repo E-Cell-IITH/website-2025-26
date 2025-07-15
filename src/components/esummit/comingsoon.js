@@ -1,4 +1,4 @@
-export default function EsummitHeroSection() {
+export default function HeroSection() {
     return (
         <>
             <br />
@@ -27,12 +27,13 @@ export default function EsummitHeroSection() {
                             COMING SOON
                         </h1>
 
-                      
-                       
+                        {/* Shown below lg, fits in one line */}
+                        <h1 className="text-white font-bold text-[15vw] sm:text-[30px] md:text-[5vw] lg:hidden whitespace-nowrap animated-gradient-text">
+                            COMING <br/>
+                            SOON 
+                        </h1>
                     </div>
 
-                    {/* IIT H Text */}
-                   
                 </div>
             </section>
         </>
