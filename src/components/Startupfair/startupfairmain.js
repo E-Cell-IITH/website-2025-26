@@ -30,21 +30,7 @@ export default function Startupfairmain() {
             </h1>
           </div>
 
-          {/* Subheading - "2024-2025" with gradient */}
-          {/* <div className="absolute top-[60%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
-            
-            <div className="flex flex-row justify-center mt-[10vh] flex-wrap gap-x-4">
-              <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl">
-                THINK
-              </span>
-              <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl">
-                | BUILD
-              </span>
-              <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl">
-                | INSPIRE
-              </span>
-            </div>
-          </div> */}
+         
         </div>
       </section>
     </>
