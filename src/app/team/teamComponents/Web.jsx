@@ -25,7 +25,7 @@ export default function Web(){
     ]
     return (
         <TeamGrid 
-            sectionTitle="Web Managers"
+            sectionTitle="Web"
             members={members}
         />
     )
