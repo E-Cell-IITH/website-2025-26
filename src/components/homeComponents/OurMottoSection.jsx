@@ -1,11 +1,11 @@
-// components/OurMottoSection.js
+"use client"
+import dynamic from "next/dynamic";
 
-import Card from "./card";
-import AnimatedSection from "./animatedSection";
+const Card = dynamic(() => import("./card"), { ssr: false });
 
 export default function OurMottoSection() {
   return (
-    <AnimatedSection className="w-full flex flex-col items-center mt-9">
+    <div className="w-full flex flex-col items-center mt-9">
       <h2 className="text-2xl md:text-7xl font-bold mb-10">OUR MOTTO</h2>
       <div className="flex flex-col md:flex-row justify-center items-stretch gap-6">
         <Card
@@ -27,6 +27,6 @@ export default function OurMottoSection() {
           text="The key to stick through tough times and not giving up is to be relentlessly inspired to take on challenges. By organizing various talks by successful entrepreneurs, E-Cell IITH aims to inspire students to take the path of entrepreneurship."
         />
       </div>
-    </AnimatedSection>
+    </div>
   );
 }
