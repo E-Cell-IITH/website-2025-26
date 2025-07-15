@@ -126,37 +126,42 @@ export default function DomainHeads(){
         }
     ];
     return (
+     
     <main className="min-h-screen bg-black text-white px-4 py-12">
-  <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
-    DOMAIN HEADS
-  </h1>
-  <div className="max-w-4xl mx-auto">
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-      {domains.map((domain) => (
-        <div
-          key={domain.domain}
-          className="flex flex-col items-center"
-        >
-          <h2 className="text-xl font-bold mb-4 text-center">
-            {domain.domain}
-          </h2>
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        DOMAIN HEADS
+      </h1>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {domain.members.map((member) => (
-              <ProfileCard
-                key={member.name + member.role}
-                name={member.name}
-                photoSrc={member.photoSrc}
-                gmailAddress={member.gmailAddress}
-                linkedinURL={member.linkedinURL}
-              />
-            ))}
-          </div>
+      <div className="max-w-6xl mx-auto">
+        {/* 3 domains per row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {domains.map((domain) => (
+            <div
+              key={domain.domain}
+              className="flex flex-col p-4"
+            >
+              {/* Domain title */}
+              <h2 className="text-xl font-bold mb-4 text-center">
+                {domain.domain}
+              </h2>
+
+              {/* Members container: force side by side */}
+              <div className="flex flex-wrap justify-center items-center gap-4 w-full">
+                {domain.members.map((member) => (
+                  <ProfileCard
+                    key={member.name + member.role}
+                    name={member.name}
+                    photoSrc={member.photoSrc}
+                    gmailAddress={member.gmailAddress}
+                    linkedinURL={member.linkedinURL}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</main>
+      </div>
+    </main>
 
 
 
