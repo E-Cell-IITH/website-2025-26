@@ -119,7 +119,7 @@ export default function SessionTabs() {
                   return (
                     <div
                       key={idx}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-xl border border-purple-500/10 hover:border-purple-500/30 hover:scale-[1.02] transition-all"
+                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-xl border border-purple-500/10 hover:border-purple-500/30 hover:scale-[1.05] transition-transform duration-300"
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-500 rounded-lg flex items-center justify-center">
