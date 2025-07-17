@@ -104,8 +104,6 @@ export default function Navbarlayout() {
                   {/* Underline */}
                   <div className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 group-hover:w-full transition-all duration-400 ease-out rounded-full"></div>
 
-                  {/* Side accent */}
-                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-0 h-12 bg-gradient-to-r from-blue-400 to-transparent group-hover:w-2 transition-all duration-300 ease-out rounded-r-full opacity-0 group-hover:opacity-100"></div>
                 </Link>
               </div>
             ))}
