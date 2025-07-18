@@ -73,6 +73,11 @@ export default function App() {
      */
     const handleSubmit = (e) => {
         e.preventDefault();
+        const formData = new FormData(e.target);
+        const submissionData1 = Object.fromEntries(formData.entries());
+
+        console.log(submissionData1);
+
         if (isSubmitDisabled) return;
 
         setSubmissionStatus('submitting');
@@ -109,13 +114,19 @@ export default function App() {
             <div className="bg-black min-h-screen text-gray-200 ">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
-                        {/* --- Header --- */}
-                        <div className="text-center border-b border-gray-700 pb-16 mb-20">
-                            <h1 className="text-6xl lg:text-7xl lg:text-8xl font-extrabold text-white">E-MERGE '25 | Student Registration</h1>
-                            <p className="mt-6 text-2xl lg:text-3xl text-gray-400">
+                        <div className="relative flex items-center justify-center min-h-[85vh] bg-black text-center p-4">
+                        {/* It's good practice to have a slightly darker background like bg-gray-900 or black when using text-white for a hero section. */}
+                        <div className="max-w-5xl">
+
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-tight">
+                                E-MERGE '25 <span className="mx-2 text-white">|</span> Student Registration
+                            </h1>
+
+                            <p className="mt-6 text-xl md:text-2xl lg:text-3xl text-gray-400">
                                 IIT Hyderabad | 12th October 2025 | Organized by E-Cell, IIT Hyderabad
                             </p>
                         </div>
+                    </div>
 
                         {/* --- Introduction & Pass Types --- */}
                         <div className="mb-20 p-6 sm:p-8">
