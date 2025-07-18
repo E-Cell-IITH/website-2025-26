@@ -8,9 +8,8 @@ import RadioGroup from "./RadioGroup";
 import SectionHeader from "./SectionHeader";
 
 export default function App() {
-    // State to manage the selected registration type ('individual' or 'team')
     const [registrationType, setRegistrationType] = useState('individual');
-    
+
     // State for all form inputs
     const [formData, setFormData] = useState({
         collegeName: '',
@@ -32,12 +31,12 @@ export default function App() {
         secondaryPocPhone: '',
         secondaryPocEmail: '',
         // Declarations
+        utrNumber: '',
         confirmStudents: false,
         confirmPhysicalPresence: false,
         confirmTeamSize: false,
     });
-    
-    // State to track submission status and modal visibility
+
     const [submissionStatus, setSubmissionStatus] = useState(null); // 'submitting', 'success', 'error'
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -59,8 +58,7 @@ export default function App() {
         const teamSize = parseInt(formData.teamSize, 10) || 0;
         return pricePerPerson * teamSize;
     }, [registrationType, formData.competitionInterest, formData.teamSize]);
-    
-    // Determine if the submit button should be disabled
+
     const isSubmitDisabled = useMemo(() => {
         const baseConditions = !formData.confirmStudents || !formData.confirmPhysicalPresence;
         if (registrationType === 'team') {
@@ -78,10 +76,6 @@ export default function App() {
         if (isSubmitDisabled) return;
 
         setSubmissionStatus('submitting');
-        
-        // IMPORTANT: Replace this with your actual Google Apps Script URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwG.../exec'; // Placeholder URL - REPLACE THIS
-
         const submissionData = {
             RegistrationType: registrationType,
             SubmissionTimestamp: new Date().toISOString(),
@@ -96,6 +90,7 @@ export default function App() {
             TeamName: formData.teamName,
             TeamSize: formData.teamSize,
             CompetitionInterest: formData.competitionInterest,
+            utrNumber: formData.utrNumber,
             PrimaryPocName: formData.primaryPocName,
             PrimaryPocPhone: formData.primaryPocPhone,
             PrimaryPocEmail: formData.primaryPocEmail,
@@ -104,45 +99,19 @@ export default function App() {
             SecondaryPocEmail: formData.secondaryPocEmail,
         };
 
-        fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(submissionData),
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.text().then(text => { 
-                    throw new Error(`Google Script returned a non-OK response: ${text}`);
-                });
-            }
-            return res.json();
-        })
-        .then(data => {
-            if (data.result === 'success') {
-                setSubmissionStatus('success');
-                setShowSuccessModal(true);
-            } else {
-                throw new Error(data.message || 'Unknown error from Google Script');
-            }
-        })
-        .catch(error => {
-            console.error('Error submitting to Google Sheet:', error);
-            setSubmissionStatus('error');
-        });
+        console.log(submissionData)
+
     };
 
     return (
         <>
             {showSuccessModal && <SuccessModal onClose={() => setShowSuccessModal(false)} />}
-            <div className="bg-black min-h-screen text-gray-200 font-sans">
+            <div className="bg-black min-h-screen text-gray-200 ">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
                         {/* --- Header --- */}
                         <div className="text-center border-b border-gray-700 pb-16 mb-20">
-                            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white">E-MERGE '25 | Student Registration</h1>
+                            <h1 className="text-6xl lg:text-7xl lg:text-8xl font-extrabold text-white">E-MERGE '25 | Student Registration</h1>
                             <p className="mt-6 text-2xl lg:text-3xl text-gray-400">
                                 IIT Hyderabad | 12th October 2025 | Organized by E-Cell, IIT Hyderabad
                             </p>
@@ -256,14 +225,20 @@ export default function App() {
                                         <span className="text-6xl font-bold text-fuchsia-400">₹{amountToPay.toLocaleString('en-IN')}</span>
                                     </div>
                                     <p className="text-xl text-gray-400 mb-6 leading-relaxed text-center">Please pay the total amount to the UPI ID: <strong className="text-gray-200">ecell@iithyderabad.upi</strong> or scan the QR code below.</p>
-                                    <img 
-                                        src="http://googleusercontent.com/file_content/1" 
-                                        alt="QR Code for payment" 
+                                    <img
+                                        src="http://googleusercontent.com/file_content/1"
+                                        alt="QR Code for payment"
                                         className="w-56 h-56 mx-auto my-6 rounded-lg"
                                     />
                                     <div className="mt-8">
-                                        <label htmlFor="paymentScreenshot" className="block text-xl font-medium text-gray-300 mb-3">Upload payment screenshot</label>
-                                        <input type="file" id="paymentScreenshot" name="paymentScreenshot" className="block w-full text-xl text-gray-400 file:mr-5 file:py-3 file:px-6 file:rounded-full file:border-0 file:text-lg file:font-semibold file:bg-fuchsia-500/10 file:text-fuchsia-300 hover:file:bg-fuchsia-500/20 cursor-pointer"/>
+                                        <label htmlFor="paymentScreenshot" className="block text-xl font-medium text-gray-300 mb-3">Enter UTR Number</label>
+                                        <InputField
+                                            id="utrNumber"
+                                            placeholder="e.g., TXN123456789"
+                                            value={formData.utrNumber}
+                                            onChange={handleInputChange}
+                                        />
+
                                     </div>
                                 </div>
                             </div>
