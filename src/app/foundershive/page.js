@@ -1,6 +1,6 @@
 import HeroSection from "@/components/founderhive/herosection";
 import Sessiontabs from "@/components/founderhive/sessiontabs";
-import UpcomingSessions from "@/components/founderhive/upcomingsessions";
+// import UpcomingSessions from "@/components/founderhive/upcomingsessions";
 import StartupConcepts from "@/components/founderhive/Startupconcepts";
 import EventGallerySection from "@/components/founderhive/eventgallery";
 import FooterLine from "@/components/founderhive/Footerline";
@@ -10,7 +10,7 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
       <Sessiontabs />
-      <UpcomingSessions />
+      {/* <UpcomingSessions /> */}
       <StartupConcepts />
       <EventGallerySection />
       <FooterLine />
