@@ -1,10 +1,9 @@
 import Caution from "./Caution"
+
 export default function HeroSection(props){
     return (
         <>
         <Caution />
-        <br />
-        <br />
         <section className="relative h-screen w-full overflow-hidden">
             {/* Background Image container */}
             <img 
@@ -12,37 +11,47 @@ export default function HeroSection(props){
                 alt="Background Image"
                 className="absolute inset-0 w-full h-full object-cover object-center"
             />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/90   to-black opacity-100 z-10"></div>
+            {/* Enhanced Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-purple-900/20 to-black/90 z-10"></div>
             
-            {/* Ecell Logo */}
-            <div className="absolute top-[0.5vh] left-0 right-0 text-center p-4 z-20">
-                <img src="/EcellLogo.png" alt="Ecell Logo" className="w-[12vw] h-[12    vh] object-contain"/>
+            {/* Ecell Logo - more refined positioning */}
+            <div className="absolute top-8 left-0 right-0 text-center z-20">
+                <img src="/EcellLogo.png" alt="Ecell Logo" className="w-24 h-24 lg:w-32 lg:h-32 mx-auto object-contain opacity-90"/>
             </div>
-            <div className="relative w-full h-screen"> 
-            {/* Ecell Text */}
-            <div className="absolute top-[40%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
-                <h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl hidden lg:block animated-gradient-text">
-                TEAM E-CELL
-                </h1>
-                <h1 className="text-white font-bold text-7xl md:text-6xl lg:hidden animated-gradient-text">
-                TEAM 
-                </h1>
-            </div>
+            
+            <div className="relative w-full h-screen flex flex-col items-center justify-center z-20"> 
+                {/* Main Title - more elegant spacing */}
+                <div className="text-center mb-8 animate-slide-up">
+                    <h1 className="font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl animated-gradient-text mb-4">
+                        TEAM E-CELL
+                    </h1>
+                    <div className="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+                </div>
 
-            {/* IIT H Text */}
-            <div className="absolute top-[60%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
-                <h2 className="text-white font-bold text-4xl sm:text-4xl md:text-5xl lg:text-7xl">IIT HYDERABAD</h2>
-                <div className="flex flex-row justify-center mt-[10vh]">
-                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl">THINK</span>
-                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl pl-4">| BUILD</span>
-                <span className="text-white font-extralight text-2xl sm:text-xl md:text-3xl lg:text-4xl pl-4">| INSPIRE</span>
+                {/* Subtitle - cleaner design */}
+                <div className="text-center animate-slide-up">
+                    <h2 className="text-white font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-12 tracking-wide">
+                        IIT HYDERABAD
+                    </h2>
+                    
+                    {/* Motto - more sophisticated layout */}
+                    <div className="flex items-center justify-center space-x-8 text-white/80">
+                        <span className="text-xl md:text-2xl lg:text-3xl font-light tracking-widest hover:text-purple-400 transition-colors duration-300">THINK</span>
+                        <div className="w-px h-8 bg-white/30"></div>
+                        <span className="text-xl md:text-2xl lg:text-3xl font-light tracking-widest hover:text-purple-400 transition-colors duration-300">BUILD</span>
+                        <div className="w-px h-8 bg-white/30"></div>
+                        <span className="text-xl md:text-2xl lg:text-3xl font-light tracking-widest hover:text-purple-400 transition-colors duration-300">INSPIRE</span>
+                    </div>
                 </div>
             </div>
 
-
+            {/* Subtle animated particles effect */}
+            <div className="absolute inset-0 z-15">
+                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"></div>
+                <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-pink-400/40 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-blue-400/20 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
             </div>
         </section>
-    </>
+        </>
     )
 }
