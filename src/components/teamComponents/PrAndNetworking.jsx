@@ -1,32 +1,12 @@
 import TeamGrid from "./teamgrid";
+import { teamMembers, domainDescriptions } from "../../data/teamData";
 
 export default function PrN(){
-    const members = [
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-    ]
     return (
         <TeamGrid 
             sectionTitle="PR & Networking"
-            members={members}
+            members={teamMembers.prNetworking}
+            description={domainDescriptions.prNetworking}
         />
     )
 }
