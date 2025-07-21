@@ -1,32 +1,12 @@
 import TeamGrid from "./teamgrid";
+import { teamMembers, domainDescriptions } from "../../data/teamData";
 
 export default function Ideation(){
-    const members = [
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-    ]
     return (
         <TeamGrid 
             sectionTitle="Ideation"
-            members={members}
+            members={teamMembers.ideation}
+            description={domainDescriptions.ideation}
         />
     )
 }
