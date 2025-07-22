@@ -30,8 +30,8 @@ export default function TeamGrid({ sectionTitle, members, description }) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-10">
               {members.map((member, idx) => (
                 <div key={idx} className="text-center">
-                  {/* Enhanced photo layout */}
-                  <div className="w-32 h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 mx-auto mb-4 rounded-full overflow-hidden bg-gray-800/50 ring-2 ring-gray-700/30">
+                  {/* Smaller photo layout */}
+                  <div className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-800/50 ring-2 ring-gray-700/30">
                     <Image
                       src={member.imgSrc}
                       alt={member.name}
