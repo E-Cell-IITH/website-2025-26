@@ -60,6 +60,12 @@ export const domainHeads = [
         photoSrc: "/timCook.jpg",
         gmailAddress: "corporate@ecell.iith.ac.in",
         linkedinURL: "https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
+      },
+      {
+        name: "Tim Cook",
+        photoSrc: "/timCook.jpg",
+        gmailAddress: "corporate@ecell.iith.ac.in",
+        linkedinURL: "https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
       }
     ]
   },
@@ -70,6 +76,12 @@ export const domainHeads = [
         name: "Tim Cook",
         photoSrc: "/timCook.jpg",
         gmailAddress: "design@ecell.iith.ac.in",
+        linkedinURL: "https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
+      },
+      {
+        name: "Tim Cook",
+        photoSrc: "/timCook.jpg",
+        gmailAddress: "corporate@ecell.iith.ac.in",
         linkedinURL: "https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
       }
     ]
