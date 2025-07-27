@@ -116,8 +116,8 @@ export default function RegistrationForm() {
            <div className="min-h-screen text-gray-200 bg-gradient-to-b from-[#02023B] via-[#1C1C4A] to-[#0F0F1C]">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
-                        <div className="relative flex flex-col items-center justify-center min-h-[90vh] text-center p-4">
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent ">
+                        <div className="relative flex flex-col items-center justify-center min-h-[92vh] text-center p-4">
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                                 E-MERGE '25 
                             </h1>
                             <p className="mt-6 text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-gray-400 via-gray-300 to-blue-300 bg-clip-text text-transparent">
