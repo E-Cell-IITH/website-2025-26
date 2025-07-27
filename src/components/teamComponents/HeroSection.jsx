@@ -29,7 +29,7 @@ export default function HeroSectionTeam() {
 
                         {/* Shown below lg, fits in one line */}
                         <h1 className="text-white font-bold text-[15vw] sm:text-[30px] md:text-[5vw] lg:hidden whitespace-nowrap animated-gradient-text">
-                            E-CELL
+                            TEAM 
                         </h1>
                     </div>
 

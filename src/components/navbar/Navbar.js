@@ -40,7 +40,7 @@ export default function Navbarlayout() {
   return (
     <>
       {/* Hamburger Button */}
-      <div className="fixed top-[10vh] right-[10vh] z-[60]">
+      <div className="fixed top-[10vh] right-[5vh] z-[60]">
         <button
           onClick={() => (isOpen ? handleClose() : setIsOpen(true))}
           className="w-14 h-14 relative group hover:scale-110 transition-transform duration-300"
