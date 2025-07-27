@@ -58,11 +58,11 @@ export default function RegistrationForm() {
         e.preventDefault();
         const formData = new FormData(e.target);
 
-  // Convert the FormData object into a plain JavaScript object
-  const submissionData1 = Object.fromEntries(formData.entries());
+        // Convert the FormData object into a plain JavaScript object
+        const submissionData1 = Object.fromEntries(formData.entries());
 
-  // Log the object to the console to verify the data
-  console.log(submissionData1);
+        // Log the object to the console to verify the data
+        console.log(submissionData1);
 
         if (isSubmitDisabled) return;
 
@@ -113,20 +113,17 @@ export default function RegistrationForm() {
     return (
         <>
             {showSuccessModal && <SuccessModal onClose={() => setShowSuccessModal(false)} />}
-            <div className="bg-black min-h-screen text-gray-200">
+           <div className="min-h-screen text-gray-200 bg-gradient-to-b from-[#02023B] via-[#1C1C4A] to-[#0F0F1C]">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
-                        <div className="relative flex items-center justify-center min-h-[85vh] bg-black text-center p-4">
-                            <div className="max-w-5xl">
-                                <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-tight">
-                                    E-MERGE '25 <span className="mx-2 text-white">|</span> Student Registration
-                                </h1>
-                                <p className="mt-6 text-xl md:text-2xl lg:text-3xl text-gray-400">
-                                    IIT Hyderabad | 12th October 2025 | Organized by E-Cell, IIT Hyderabad
-                                </p>
-                            </div>
+                        <div className="relative flex flex-col items-center justify-center min-h-[90vh] text-center p-4">
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent ">
+                                E-MERGE '25 
+                            </h1>
+                            <p className="mt-6 text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-gray-400 via-gray-300 to-blue-300 bg-clip-text text-transparent">
+                                Student Registration | IIT Hyderabad | 12th October 2025 | Organized by E-Cell, IIT Hyderabad
+                            </p>
                         </div>
-
                         <div className="mb-20 p-6 sm:p-8">
                             <p className="text-2xl lg:text-3xl text-gray-300 mb-10 leading-relaxed">Welcome to the official registration form for E-MERGE '25 — a national celebration of ideas, innovation, and student entrepreneurship. Choose between:</p>
                             <div className="space-y-8 text-2xl text-gray-200">
@@ -167,33 +164,33 @@ export default function RegistrationForm() {
                             )}
 
                             {registrationType === 'team' && (
-                                 <div className="mt-16 p-8 sm:p-10 border-l-4 border-fuchsia-500 bg-fuchsia-900/20 rounded-r-lg">
-                                     <h3 className="text-4xl font-bold text-white mb-8">Team Details</h3>
-                                     <div className="space-y-14">
-                                         <InputField id="teamName" label="Team Name" placeholder="Your awesome team name" value={formData.teamName} onChange={handleInputChange} />
-                                         <div>
-                                             <label htmlFor="teamSize" className="block text-xl font-medium text-gray-300 mb-3">Number of Team Members</label>
-                                             <select id="teamSize" name="teamSize" value={formData.teamSize} onChange={handleInputChange} className="w-full px-6 py-4 bg-gray-800 border-gray-700 text-white rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition text-xl">
-                                                 <option>3</option><option>4</option><option>5</option>
-                                             </select>
-                                             <p className="mt-3 text-lg text-gray-400">*Minimum 3 members required to participate in The BoardRoom.</p>
-                                         </div>
-                                         <RadioGroup name="competitionInterest" legend="Is your team interested in participating in The BoardRoom?" options={[{ value: 'yes', label: 'Yes – BoardRoom + Full Access (₹750 per person)' }, { value: 'no', label: 'No – General Access only (₹599 per person)' }]} selectedValue={formData.competitionInterest} onChange={handleInputChange} />
-                                         <div>
-                                             <h4 className="text-3xl font-semibold text-white mb-6">Point of Contact Details</h4>
-                                             <div className="space-y-10 p-8 border border-gray-700 rounded-lg bg-gray-900/40">
-                                                 <h5 className="font-semibold text-2xl text-gray-100">Primary POC</h5>
-                                                 <InputField id="primaryPocName" label="Primary POC Name" value={formData.primaryPocName} onChange={handleInputChange} />
-                                                 <InputField id="primaryPocPhone" label="Phone Number" type="tel" value={formData.primaryPocPhone} onChange={handleInputChange} />
-                                                 <InputField id="primaryPocEmail" label="Email Address" type="email" value={formData.primaryPocEmail} onChange={handleInputChange} />
-                                                 <h5 className="font-semibold pt-8 border-t border-gray-700 text-2xl text-gray-100">Secondary POC</h5>
-                                                 <InputField id="secondaryPocName" label="Secondary POC Name" value={formData.secondaryPocName} onChange={handleInputChange} />
-                                                 <InputField id="secondaryPocPhone" label="Phone Number" type="tel" value={formData.secondaryPocPhone} onChange={handleInputChange} />
-                                                 <InputField id="secondaryPocEmail" label="Email Address" type="email" value={formData.secondaryPocEmail} onChange={handleInputChange} />
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
+                                <div className="mt-16 p-8 sm:p-10 border-l-4 border-fuchsia-500 bg-fuchsia-900/20 rounded-r-lg">
+                                    <h3 className="text-4xl font-bold text-white mb-8">Team Details</h3>
+                                    <div className="space-y-14">
+                                        <InputField id="teamName" label="Team Name" placeholder="Your awesome team name" value={formData.teamName} onChange={handleInputChange} />
+                                        <div>
+                                            <label htmlFor="teamSize" className="block text-xl font-medium text-gray-300 mb-3">Number of Team Members</label>
+                                            <select id="teamSize" name="teamSize" value={formData.teamSize} onChange={handleInputChange} className="w-full px-6 py-4 bg-gray-800 border-gray-700 text-white rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition text-xl">
+                                                <option>3</option><option>4</option><option>5</option>
+                                            </select>
+                                            <p className="mt-3 text-lg text-gray-400">*Minimum 3 members required to participate in The BoardRoom.</p>
+                                        </div>
+                                        <RadioGroup name="competitionInterest" legend="Is your team interested in participating in The BoardRoom?" options={[{ value: 'yes', label: 'Yes – BoardRoom + Full Access (₹750 per person)' }, { value: 'no', label: 'No – General Access only (₹599 per person)' }]} selectedValue={formData.competitionInterest} onChange={handleInputChange} />
+                                        <div>
+                                            <h4 className="text-3xl font-semibold text-white mb-6">Point of Contact Details</h4>
+                                            <div className="space-y-10 p-8 border border-gray-700 rounded-lg bg-gray-900/40">
+                                                <h5 className="font-semibold text-2xl text-gray-100">Primary POC</h5>
+                                                <InputField id="primaryPocName" label="Primary POC Name" value={formData.primaryPocName} onChange={handleInputChange} />
+                                                <InputField id="primaryPocPhone" label="Phone Number" type="tel" value={formData.primaryPocPhone} onChange={handleInputChange} />
+                                                <InputField id="primaryPocEmail" label="Email Address" type="email" value={formData.primaryPocEmail} onChange={handleInputChange} />
+                                                <h5 className="font-semibold pt-8 border-t border-gray-700 text-2xl text-gray-100">Secondary POC</h5>
+                                                <InputField id="secondaryPocName" label="Secondary POC Name" value={formData.secondaryPocName} onChange={handleInputChange} />
+                                                <InputField id="secondaryPocPhone" label="Phone Number" type="tel" value={formData.secondaryPocPhone} onChange={handleInputChange} />
+                                                <InputField id="secondaryPocEmail" label="Email Address" type="email" value={formData.secondaryPocEmail} onChange={handleInputChange} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             )}
 
                             {/* --- Payment Summary --- */}
@@ -211,7 +208,7 @@ export default function RegistrationForm() {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             {/* --- Final Declarations & Submit --- */}
                             <div>
                                 <SectionHeader title="Final Declarations" />

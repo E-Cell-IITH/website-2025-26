@@ -1,4 +1,4 @@
-export default function HeroSection() {
+export default function HeroSectionTeam() {
     return (
         <>
             <br />
@@ -24,7 +24,7 @@ export default function HeroSection() {
                     <div className="absolute top-[40%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
                         {/* Only visible on large and above */}
                         <h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-8xl hidden lg:block animated-gradient-text">
-                            ENTREPRENEURSHIP CELL
+                            TEAM E-CELL
                         </h1>
 
                         {/* Shown below lg, fits in one line */}
