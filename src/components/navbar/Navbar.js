@@ -7,10 +7,10 @@ const navItems = [
   { label: 'TEAM', href: '/team' },
   { label: 'E SUMMIT', href: '/esummit' },
   { label: 'STARTUP FAIR', href: '/startupfair' },
+  { label: 'EMERGE', href: '/emerge' },
   { label: 'FOUNDERS HIVE', href: '/foundershive' },
   { label: 'MUN', href: '/mun' },
   { label: 'PARTNERS', href: '/partners' },
-  // { label: 'WORKSHOPS', href: '/workshops' },
   { label: 'IITH STARTUPS', href: '/startups' },
 ];
 
@@ -46,23 +46,20 @@ export default function Navbarlayout() {
           className="w-14 h-14 relative group hover:scale-110 transition-transform duration-300"
         >
           <span
-            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${
-              isOpen
+            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${isOpen
                 ? 'rotate-45 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-400 to-cyan-400'
                 : '-translate-x-1/2 -translate-y-3 group-hover:w-9'
-            }`}
+              }`}
           />
           <span
-            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${
-              isOpen ? 'opacity-0 scale-0' : '-translate-x-1/2 -translate-y-1/2 group-hover:w-6'
-            }`}
+            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${isOpen ? 'opacity-0 scale-0' : '-translate-x-1/2 -translate-y-1/2 group-hover:w-6'
+              }`}
           />
           <span
-            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${
-              isOpen
+            className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${isOpen
                 ? '-rotate-45 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-400 to-cyan-400'
                 : '-translate-x-1/2 translate-y-3 group-hover:w-9'
-            }`}
+              }`}
           />
         </button>
       </div>
