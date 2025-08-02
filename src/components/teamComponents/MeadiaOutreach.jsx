@@ -1,32 +1,12 @@
 import TeamGrid from "./teamgrid";
+import { teamMembers, domainDescriptions } from "../../data/teamData";
 
-export default function MediaAndOutreach(){
-    const members = [
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-    ]
+export default function MediaAndOutreach() {
     return (
-        <TeamGrid 
-            sectionTitle="Media and Outreach"
-            members={members}
+        <TeamGrid
+            sectionTitle="Media & Outreach"
+            members={teamMembers.mediaOutreach}
+            description={domainDescriptions.mediaOutreach}
         />
     )
 }

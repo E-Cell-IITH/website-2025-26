@@ -1,38 +1,52 @@
 import Image from "next/image";
 
-export default function TeamGrid({ sectionTitle, members }) {
+export default function TeamGrid({ sectionTitle, members, description }) {
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white px-4 py-16">
-      {/* Overall Section Title */}
-      <div className="w-full flex items-center justify-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">Managers</h2>
-      </div>
+    <div className="min-h-screen bg-black text-white px-6 py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
+          {/* Enhanced section title with better text sizing */}
+          <div className="lg:w-2/5 mb-16 lg:mb-0 lg:sticky lg:top-24">
+            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-8">
+              {sectionTitle}
+            </h1>
+            <div className="w-20 h-1 bg-white/40 mb-8"></div>
 
-      {/* One container per domain */}
-      <div className="w-full flex flex-col md:flex-row md:items-center md:gap-12">
-        {/* Domain Title on the left */}
-        <div className="w-full md:w-1/4 mb-8 md:mb-0 flex justify-center md:justify-start">
-          <h1 className="text-4xl md:text-5xl font-bold text-center md:text-left self-center w-48 md:w-60 leading-tight">
-            {sectionTitle}
-          </h1>
-        </div>
+            {/* Enhanced domain description */}
+            {description && (
+              <p className="text-gray-300 text-base lg:text-lg xl:text-xl leading-relaxed font-light">
+                {description}
+              </p>
+            )}
+          </div>
 
-        {/* Members on the right */}
-        <div className="w-full md:w-3/4 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8">
-          {members.map((member, idx) => (
-            <div key={idx} className="text-center">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 mx-auto rounded-xl overflow-hidden mb-3">
-                <Image
-                  src={member.imgSrc}
-                  alt={member.name}
-                  width={150}
-                  height={150}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="text-base sm:text-lg">{member.name}</div>
+          {/* Enhanced member grid */}
+          <div className="lg:w-3/5">
+            {/* Managers heading */}
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-8 text-center">
+              Managers
+            </h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-10">
+              {members.map((member, idx) => (
+                <div key={idx} className="text-center">
+                  {/* Smaller photo layout */}
+                  <div className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-800/50 ring-2 ring-gray-700/30">
+                    <Image
+                      src={member.imgSrc}
+                      alt={member.name}
+                      width={160}
+                      height={160}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <h3 className="text-base lg:text-lg xl:text-xl font-semibold text-white">
+                    {member.name}
+                  </h3>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>
