@@ -43,7 +43,7 @@ export default function Navbarlayout() {
       <div className="fixed top-[10vh] right-[5vh] z-[60]">
         <button
           onClick={() => (isOpen ? handleClose() : setIsOpen(true))}
-          className="w-14 h-14 relative group hover:scale-110 transition-transform duration-300"
+          className="w-14 h-14 relative group hover:scale-110 transition-transform duration-300 hover:cursor-pointer"
         >
           <span
             className={`absolute w-8 h-[3px] bg-white top-1/2 left-1/2 transition-all duration-400 ease-out rounded-full ${isOpen
