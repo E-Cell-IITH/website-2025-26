@@ -1,32 +1,12 @@
 import TeamGrid from "./teamgrid";
+import { teamMembers, domainDescriptions } from "../../data/teamData";
 
 export default function Web(){
-    const members = [
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-    ]
     return (
         <TeamGrid 
             sectionTitle="Web"
-            members={members}
+            members={teamMembers.web}
+            description={domainDescriptions.web}
         />
     )
 }

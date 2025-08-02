@@ -1,4 +1,3 @@
-import HeroSection from "../../components/teamComponents/HeroSection"
 import OC from "../../components/teamComponents/OC"
 import DomainHeads from "../../components/teamComponents/DomainHeads"
 import Operations from "../../components/teamComponents/Operations"
@@ -8,10 +7,11 @@ import MediaAndOutreach from "../../components/teamComponents/MeadiaOutreach"
 import Ideation from "../../components/teamComponents/Ideation"
 import DesignAndCreatives from "../../components/teamComponents/DesignAndCreatives"
 import PrN from "../../components/teamComponents/PrAndNetworking"
+import HeroSectionTeam from "@/components/teamComponents/HeroSection"
 export default function TeamPage(){
     return (
         <>          
-            <HeroSection />
+            <HeroSectionTeam />
             <OC />
             <DomainHeads />
             <Operations />
