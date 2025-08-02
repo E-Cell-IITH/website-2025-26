@@ -12,7 +12,6 @@ export default async function Alumni() {
     limit: 1000000000,
   });
 
-//   console.log(startups.docs)
 
   return <StartUpsClient startups={startups.docs} />;
 }

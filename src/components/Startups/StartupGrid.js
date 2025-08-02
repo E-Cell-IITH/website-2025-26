@@ -10,17 +10,17 @@ export default function StartupGrid({ startUpList }) {
         {startUpList.map((startup, index) => (
           <div
             key={index}
-            className="group w-full max-w-sm rounded-xl border bg-white hover:shadow-2xl hover:scale-[1.1] transition-all duration-300 overflow-hidden transform "
+            className="group w-full max-w-sm rounded-xl border bg-white hover:shadow-2xl hover:scale-[1.1] transition-all duration-300 overflow-hidden transform"
           >
             <Link href={startup.start_up_website}>
-              <div className="w-full aspect-video flex items-center hover:cursor-pointer  justify-center p-4 bg-gray-50">
-                {startup.image ? (
+              <div className="w-full aspect-video flex items-center hover:cursor-pointer justify-center bg-gray-50">
+                {startup.start_up_logo.url ? (
                   <Image
                     src={startup.start_up_logo.url}
                     alt={startup.start_up_name}
                     width={200}
                     height={100}
-                    className="object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="w-full transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <span className="text-black text-sm">No Image</span>
