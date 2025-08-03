@@ -11,6 +11,9 @@ import { Users } from './src/collections/User'
 import { Media } from './src/collections/Media'
 import { StartUps } from '@/collections/Startups'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { Team } from '@/collections/Team'
+import { Collaborations } from '@/collections/Collaborations'
+import { PreviousSpeakers } from '@/collections/PreviousSpeakers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, StartUps],
+  collections: [Users, Media, StartUps, Team, Collaborations, PreviousSpeakers],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

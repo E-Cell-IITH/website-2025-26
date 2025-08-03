@@ -56,72 +56,50 @@ export default function RegistrationForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-
-        // Convert the FormData object into a plain JavaScript object
-        const submissionData1 = Object.fromEntries(formData.entries());
-
-        // Log the object to the console to verify the data
-        console.log(submissionData1);
-
-        if (isSubmitDisabled) return;
-
         setSubmissionStatus('submitting');
-        const scriptURL = 'PASTE_YOUR_WEB_APP_URL_HERE'; // !! IMPORTANT !!
-
-        const submissionData = {
-            RegistrationType: registrationType,
-            SubmissionTimestamp: new Date().toISOString(),
-            AmountToPay: amountToPay,
-            ...formData
-        };
 
         try {
-            const response = await fetch(scriptURL, {
-                method: 'POST',
-                mode: 'cors',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify(submissionData)
+            const response = await fetch("https://script.google.com/macros/s/AKfycbyh2j2PIiYUKSFr94sKWr1BpfIX-Ef1WlAD_mhrxRKjPyHAHgF665erw26mFnEa77o/exec", {
+                method: "POST",
+                redirect: "follow",
+                headers: {
+                    "Content-Type": "plain/text",
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    registrationType,
+                }),
             });
+
             const result = await response.json();
 
-            if (result.result === 'success') {
-                setSubmissionStatus('success');
+            if (result.status === 'success') {
                 setShowSuccessModal(true);
-                // Reset form state after successful submission
-                setFormData({
-                    collegeName: '', city: '', state: '', teamName: '',
-                    individualName: '', individualEmail: '', individualPhone: '', individualYearDept: '',
-                    teamSize: '3', competitionInterest: 'no',
-                    primaryPocName: '', primaryPocPhone: '', primaryPocEmail: '',
-                    secondaryPocName: '', secondaryPocPhone: '', secondaryPocEmail: '',
-                    utrNumber: '', confirmStudents: false, confirmPhysicalPresence: false, confirmTeamSize: false,
-                });
-                setRegistrationType('individual');
+                setSubmissionStatus('success');
             } else {
-                throw new Error(result.message || 'An unknown error occurred in Apps Script.');
+                throw new Error(result.message || 'Unknown error');
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
+        } catch (err) {
+            console.error(err);
             setSubmissionStatus('error');
-        } finally {
-            // Set status back to null after a short delay to allow user to see success/error
-            setTimeout(() => setSubmissionStatus(null), 5000);
         }
     };
+
 
     return (
         <>
             {showSuccessModal && <SuccessModal onClose={() => setShowSuccessModal(false)} />}
-           <div className="min-h-screen text-gray-200 bg-gradient-to-b from-[#02023B] via-[#1C1C4A] to-[#0F0F1C]">
+            <div className="min-h-screen text-gray-200">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
                         <div className="relative flex flex-col items-center justify-center min-h-[92vh] text-center p-4">
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                                E-MERGE '25 
+                            <h1 className="custom-heading text-glow text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-semibold mb-6 bg-gradient-to-r from-white via-purple-300 to-purple-500 bg-clip-text text-transparent transition-opacity duration-200">
+                                E-MERGE '25
                             </h1>
+
+                            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-8 animate-pulse"></div>
                             <p className="mt-6 text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-gray-400 via-gray-300 to-blue-300 bg-clip-text text-transparent">
-                                Student Registration | IIT Hyderabad | 12th October 2025 | Organized by E-Cell, IIT Hyderabad
+                                12th October 2025 | Organized by E-Cell, IIT Hyderabad
                             </p>
                         </div>
                         <div className="mb-20 p-6 sm:p-8">
