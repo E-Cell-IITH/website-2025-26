@@ -1,4 +1,4 @@
-import HeroSection from "@/components/founderhive/herosection";
+import HeroSection from "@/components/founderhive/Herosection";
 import Sessiontabs from "@/components/founderhive/sessiontabs";
 // import UpcomingSessions from "@/components/founderhive/upcomingsessions";
 import StartupConcepts from "@/components/founderhive/Startupconcepts";
