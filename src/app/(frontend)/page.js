@@ -22,7 +22,11 @@ export default async function Home() {
     limit: 1000000,
   });
 
-  console.log(response.docs)
+  const previousSpeakersResponse = await payload.find({
+    collection: "previousSpeakers",
+    limit: 1000000,
+  });
+
 
   return (
     <>
@@ -32,7 +36,7 @@ export default async function Home() {
       <VisionSection />
       <Partnership />
       <EventsPage />
-      <PreviousSpeakers />
+      <PreviousSpeakers previousSpeakers={previousSpeakersResponse.docs} />
       <Collaborators collaborations={response.docs} />
     </>
 
