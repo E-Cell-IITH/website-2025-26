@@ -6,20 +6,35 @@ import OurMottoSection from "../../components/homeComponents/OurMottoSection";
 import VisionSection from "../../components/homeComponents/OurVisionSection";
 import PreviousSpeakers from "../../components/homeComponents/Speakers";
 import EventsPage from "@/components/homeComponents/EventsSections";
+import { getPayload } from "payload";
+import config from "@payload-config";
 
 
-export default function Home() {
+
+
+
+export default async function Home() {
+
+  const payload = await getPayload({ config });
+
+  const response = await payload.find({
+    collection: "collaborations",
+    limit: 1000000,
+  });
+
+  console.log(response.docs)
+
   return (
     <>
-    <HeroSection text="ENTREPRENEURSHIP CELL" />
-    <AboutUs />
-    <OurMottoSection />
-    <VisionSection />
-    <Partnership />
-    <EventsPage />
-    <PreviousSpeakers />
-    <Collaborators />
+      <HeroSection text="ENTREPRENEURSHIP CELL" />
+      <AboutUs />
+      <OurMottoSection />
+      <VisionSection />
+      <Partnership />
+      <EventsPage />
+      <PreviousSpeakers />
+      <Collaborators collaborations={response.docs} />
     </>
-    
+
   );
 }
