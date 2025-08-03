@@ -27,7 +27,7 @@ export default function MainSection() {
           {/* Main Heading - Always show "COLLABORATIONS" */}
           <div className="absolute top-[40%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
             <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl animated-gradient-text">
-              COLLABORATIONS
+              PARTNERS
             </h1>
           </div>
 
