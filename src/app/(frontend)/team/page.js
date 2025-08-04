@@ -23,12 +23,17 @@ export default async function TeamPage() {
     const allMembers = teamResponse.docs;
 
     const filterByDomain = (domain) => {
-        return allMembers.filter((member) => member.enter_domain === domain);
+        return allMembers.filter((member) => (member.enter_domain === domain && member.head_or_manager === "MANAGER"));
     };
 
     const getHeads = () => {
         return allMembers.filter((member) => member.head_or_manager === "HEAD");
     };
+
+    console.log("Calling get heads")
+    console.log(getHeads())
+    console.log("Calling get managers by domain")
+    console.log(filterByDomain())
 
     return (
         <>

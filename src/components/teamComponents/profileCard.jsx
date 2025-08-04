@@ -6,9 +6,9 @@ export default function ProfileCard({
   large = false
 }) {
   return (
-    <div className="group relative flex flex-col items-center text-center p-6 rounded-xl ">
+    <div className="">
       {/* Subtle glow effect */}
-      <div className="absolute inset-0" />
+      <div className="" />
 
       {/* Photo with contact icons */}
       <div className="relative mb-4 z-10">
@@ -63,48 +63,6 @@ export default function ProfileCard({
 
         {/* Subtle accent line */}
         <div className="mt-2 w-8 h-0.5 bg-gray-700 rounded-full mx-auto group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:w-12 transition-all duration-300" />
-      </div>
-    </div>
-  );
-}
-
-// Demo component to showcase the ProfileCard
-function ProfileCardDemo() {
-  const profiles = [
-    {
-      name: "Alex Johnson",
-      photoSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      gmailAddress: "alex.johnson@gmail.com",
-      linkedinURL: "https://linkedin.com/in/alexjohnson",
-      large: false
-    },
-    {
-      name: "Sarah Chen",
-      photoSrc: "https://images.unsplash.com/photo-1494790108755-2616b612b5bb?w=400&h=400&fit=crop&crop=face",
-      gmailAddress: "sarah.chen@gmail.com",
-      linkedinURL: "https://linkedin.com/in/sarahchen",
-      large: true
-    },
-    {
-      name: "Michael Rodriguez",
-      photoSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      gmailAddress: "michael.rodriguez@gmail.com",
-      linkedinURL: "https://linkedin.com/in/michaelrodriguez",
-      large: false
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-white text-center mb-12">
-          Enhanced Profile Cards
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {profiles.map((profile, index) => (
-            <ProfileCard key={index} {...profile} />
-          ))}
-        </div>
       </div>
     </div>
   );
