@@ -8,9 +8,25 @@ import Ideation from "../../../components/teamComponents/Ideation"
 import DesignAndCreatives from "../../../components/teamComponents/DesignAndCreatives"
 import PrN from "../../../components/teamComponents/PrAndNetworking"
 import HeroSectionTeam from "@/components/teamComponents/HeroSection"
-export default function TeamPage(){
+import { getPayload } from "payload";
+import config from "@payload-config";
+
+
+
+export default async function TeamPage() {
+
+    const payload = await getPayload({ config })
+
+    const teamResponse = await payload.find({
+        collection: "team",
+        limit: 1000000,
+    });
+
+
+    console.log(teamResponse.docs)
+
     return (
-        <>          
+        <>
             <HeroSectionTeam />
             <OC />
             <DomainHeads />

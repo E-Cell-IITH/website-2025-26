@@ -185,8 +185,10 @@ export interface Startup {
 export interface Team {
   id: number;
   team_member_name?: string | null;
-  team_member_position?: string | null;
-  head_or_manager?: ('HEAD' | 'MANAGER') | null;
+  head_or_manager?: ('HEAD' | 'MANAGER' | 'OC' | 'VICE OC') | null;
+  enter_domain?:
+    | ('WEB' | 'PRN' | 'CRF' | 'OPS' | 'IDEATION' | 'MEDIA_OUTREACH' | 'MULTIMEDIA' | 'DESIGN' | 'EVENTS' | 'MARKETING')
+    | null;
   team_member_photo?: (number | null) | Media;
   team_member_linked_in?: string | null;
   team_member_mail?: string | null;
@@ -347,8 +349,8 @@ export interface StartupsSelect<T extends boolean = true> {
  */
 export interface TeamSelect<T extends boolean = true> {
   team_member_name?: T;
-  team_member_position?: T;
   head_or_manager?: T;
+  enter_domain?: T;
   team_member_photo?: T;
   team_member_linked_in?: T;
   team_member_mail?: T;

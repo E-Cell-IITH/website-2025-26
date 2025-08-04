@@ -9,20 +9,21 @@ export const Team: CollectionConfig = {
             label: "Enter team member name"
         },
         {
-            name: "team_member_position",
-            type: "text",
-            label: "Enter team member position"
-        },
-        {
             name: "head_or_manager",
             type: "select",
-            label: "Select Head or Manager",
-            options : ["HEAD","MANAGER"],
+            label: "Select Position",
+            options: ["HEAD", "MANAGER", "OC", "VICE OC"],
+        },
+        {
+            name: "enter_domain",
+            type: "select",
+            options: ["WEB", "PRN", "CRF", "OPS", "IDEATION", "MEDIA_OUTREACH", "MULTIMEDIA", "DESIGN", "EVENTS", "MARKETING"],
+            label: "Enter Domain"
         },
         {
             name: "team_member_photo",
             type: "upload",
-            relationTo : "media",
+            relationTo: "media",
             label: "Upload photo"
         },
         {
