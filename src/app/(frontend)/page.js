@@ -9,10 +9,6 @@ import EventsPage from "@/components/homeComponents/EventsSections";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
-
-
-
-
 export default async function Home() {
 
   const payload = await getPayload({ config });
