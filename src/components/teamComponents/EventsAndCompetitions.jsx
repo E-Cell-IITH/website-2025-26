@@ -1,32 +1,12 @@
 import TeamGrid from "./teamgrid";
+import { teamMembers, domainDescriptions } from "../../data/teamData";
 
-export default function EventsAndCompetitions(){
-    const members = [
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-        {
-            name:"Tim Cook",
-            imgSrc:"/timCook.jpg"
-        },
-    ]
+export default function EventsAndCompetitions({ members }) {
     return (
-        <TeamGrid 
+        <TeamGrid
             sectionTitle="Events And Competitions"
             members={members}
+            description={domainDescriptions.eventsAndCompetition}
         />
     )
 }

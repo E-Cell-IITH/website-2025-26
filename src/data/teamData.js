@@ -112,6 +112,7 @@ export const domainHeads = [
 
 export const domainDescriptions = {
   operations: "The backbone of E-Cell, ensuring smooth execution of all events and activities. From logistics coordination to resource management, the Operations team keeps everything running seamlessly behind the scenes.",
+  eventsAndCompetition:"hello",
   web: "Building and maintaining E-Cell's digital presence. Our web development team creates innovative platforms, manages our online ecosystem, and develops cutting-edge solutions for the entrepreneurial community.",
   ideation: "The creative powerhouse that generates innovative concepts and solutions. This team brainstorms new initiatives, develops strategic ideas, and transforms vision into actionable plans for E-Cell's growth.",
   designCreatives: "Bringing visual excellence to everything E-Cell does. From stunning graphics to compelling brand materials, our design team ensures every visual element reflects our commitment to innovation and creativity.",

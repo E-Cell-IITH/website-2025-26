@@ -1,11 +1,11 @@
 import TeamGrid from "./teamgrid";
 import { teamMembers, domainDescriptions } from "../../data/teamData";
 
-export default function Ideation(){
+export default function Ideation( {members} ){
     return (
         <TeamGrid 
             sectionTitle="Ideation"
-            members={teamMembers.ideation}
+            members={members}
             description={domainDescriptions.ideation}
         />
     )
