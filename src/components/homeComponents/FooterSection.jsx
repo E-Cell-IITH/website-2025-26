@@ -40,7 +40,7 @@ export default function Footer() {
           <p className="text-lg font-semibold mb-4">THINK | BUILD | INSPIRE</p>
 
           <div className="flex gap-4">
-            <Link href="#" aria-label="Instagram">
+            <Link href="https://www.instagram.com/ecell_iith/?hl=en" aria-label="Instagram">
               <Image
                 src="/instagram.webp" // <-- Replace with your icon path
                 alt="Instagram"
@@ -48,7 +48,7 @@ export default function Footer() {
                 height={24}
               />
             </Link>
-            <Link href="#" aria-label="LinkedIn">
+            <Link href="https://www.linkedin.com/company/ecell-iith/posts/?feedView=all" aria-label="LinkedIn">
               <Image
                 src="/linkedinLogo.webp"
                 alt="LinkedIn"
@@ -56,7 +56,7 @@ export default function Footer() {
                 height={24}
               />
             </Link>
-            <Link href="#" aria-label="Twitter">
+            <Link href="https://x.com/ecell_iith?lang=en" aria-label="Twitter">
               <Image
                 src="/twitterLogo.webp"
                 alt="Twitter"
@@ -64,7 +64,7 @@ export default function Footer() {
                 height={24}
               />
             </Link>
-            <Link href="#" aria-label="Facebook">
+            <Link href="https://www.facebook.com/ecell.iithyd/" aria-label="Facebook">
               <Image
                 src="/facebookLogo.webp"
                 alt="Facebook"
@@ -72,7 +72,7 @@ export default function Footer() {
                 height={24}
               />
             </Link>
-            <Link href="#" aria-label="YouTube">
+            <Link href="https://www.youtube.com/user/ecelliithyderabad" aria-label="YouTube">
               <Image
                 src="/youtubeLogo.webp"
                 alt="YouTube"
