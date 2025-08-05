@@ -1,11 +1,11 @@
 import TeamGrid from "./teamgrid";
-import { teamMembers, domainDescriptions } from "../../data/teamData";
+import {  domainDescriptions } from "../../data/teamData";
 
-export default function CrF(){
+export default function CrF({members}){
     return (
         <TeamGrid 
             sectionTitle="Corporate Relations & Finance"
-            members={teamMembers.corporateFinance}
+            members={members}
             description={domainDescriptions.corporateFinance}
         />
     )

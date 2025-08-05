@@ -7,6 +7,7 @@ import MediaAndOutreach from "../../../components/teamComponents/MeadiaOutreach"
 import Ideation from "../../../components/teamComponents/Ideation"
 import DesignAndCreatives from "../../../components/teamComponents/DesignAndCreatives"
 import PrN from "../../../components/teamComponents/PrAndNetworking"
+import Events from "../../../components/teamComponents/EventsAndCompetitions"
 import HeroSectionTeam from "@/components/teamComponents/HeroSection"
 import { getPayload } from "payload";
 import config from "@payload-config";
@@ -23,7 +24,7 @@ export default async function TeamPage() {
     const allMembers = teamResponse.docs;
 
     const filterByDomain = (domain) => {
-        return allMembers.filter((member) => member.enter_domain === domain);
+        return allMembers.filter((member) => (member.enter_domain === domain && member.head_or_manager === "MANAGER"));
     };
 
     const getHeads = () => {
@@ -40,9 +41,10 @@ export default async function TeamPage() {
             <CrF members={filterByDomain("CRF")} />
             <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} />
             <Ideation members={filterByDomain("IDEATION")} />
-            <DesignAndCreatives members={filterByDomain("DESIGN")} />
             <Web members={filterByDomain("WEB")} />
+            <DesignAndCreatives members={filterByDomain("DESIGN")} />
             <PrN members={filterByDomain("PRN")} />
+            <Events members={filterByDomain("EVENTS")} />
         </>
     );
 }

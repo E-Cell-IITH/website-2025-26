@@ -33,15 +33,15 @@ export default function TeamGrid({ sectionTitle, members, description }) {
                   {/* Smaller photo layout */}
                   <div className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-800/50 ring-2 ring-gray-700/30">
                     <Image
-                      src={member.imgSrc}
-                      alt={member.name}
+                      src={member.team_member_photo?.url || "/fallback.jpg"}
+                      alt={member.team_member_name}
                       width={160}
                       height={160}
                       className="object-cover w-full h-full"
                     />
                   </div>
                   <h3 className="text-base lg:text-lg xl:text-xl font-semibold text-white">
-                    {member.name}
+                    {member.team_member_name}
                   </h3>
                 </div>
               ))}

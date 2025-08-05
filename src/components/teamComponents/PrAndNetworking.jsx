@@ -1,11 +1,11 @@
 import TeamGrid from "./teamgrid";
 import { teamMembers, domainDescriptions } from "../../data/teamData";
 
-export default function PrN(){
+export default function PrN({ members }) {
     return (
-        <TeamGrid 
+        <TeamGrid
             sectionTitle="PR & Networking"
-            members={teamMembers.prNetworking}
+            members={members}
             description={domainDescriptions.prNetworking}
         />
     )
