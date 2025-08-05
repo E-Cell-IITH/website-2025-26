@@ -11,7 +11,7 @@ import Events from "../../../components/teamComponents/EventsAndCompetitions"
 import HeroSectionTeam from "@/components/teamComponents/HeroSection"
 import { getPayload } from "payload";
 import config from "@payload-config";
-
+import VICEOC from "../../../components/teamComponents/ViceOC"
 
 export default async function TeamPage() {
     const payload = await getPayload({ config });
@@ -35,6 +35,7 @@ export default async function TeamPage() {
         <>
             <HeroSectionTeam />
             <OC members={filterByDomain("OC")} />
+            <VICEOC members={filterByDomain("VICEOC")} />
             <DomainHeads members={getHeads()} />
             <Operations members={filterByDomain("OPS")} />
             <CrF members={filterByDomain("CRF")} />
@@ -47,3 +48,4 @@ export default async function TeamPage() {
         </>
     );
 }
+2
