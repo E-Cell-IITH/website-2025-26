@@ -1,6 +1,12 @@
-// Team data for E-Cell IIT Hyderabad
+ // Team data for E-Cell IIT Hyderabad
 
 export const overallHead = {
+  name: "Tim Cook",
+  photoSrc: "/timCook.jpg",
+  gmailAddress: "timcook@ecell.iith.ac.in",
+  linkedinURL: "https://www.linkedin.com/in/cooktim/?originalSubdomain=uk"
+};
+export const viceOc = {
   name: "Tim Cook",
   photoSrc: "/timCook.jpg",
   gmailAddress: "timcook@ecell.iith.ac.in",

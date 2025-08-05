@@ -1,3 +1,4 @@
+import {useState} from 'react';
 export default function ProfileCard({
   name,
   photoSrc,
@@ -5,8 +6,13 @@ export default function ProfileCard({
   linkedinURL,
   large = false
 }) {
+  const [isHovered,setHov]=useState(false);
+  const toggleHover = () => setIsHovered(!isHovered);
   return (
-    <div className="group relative flex flex-col items-center text-center p-6 rounded-xl ">
+    <div className="group relative flex flex-col items-center text-center p-6 rounded-xl "
+      onClick={toggleHover}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
       {/* Subtle glow effect */}
       <div className="absolute inset-0" />
 
