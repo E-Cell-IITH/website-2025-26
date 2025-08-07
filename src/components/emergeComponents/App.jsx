@@ -59,7 +59,7 @@ export default function RegistrationForm() {
         setSubmissionStatus('submitting');
 
         try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycbyh2j2PIiYUKSFr94sKWr1BpfIX-Ef1WlAD_mhrxRKjPyHAHgF665erw26mFnEa77o/exec", {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbya7RoG7QJ3-qR2s6o1thMySAiwnFV54wbKnB6MIUWVkD508exu2wy126Khc1aT1Ac/exec", {
                 method: "POST",
                 redirect: "follow",
                 headers: {
