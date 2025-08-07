@@ -1,7 +1,7 @@
 import ProfileCard from "./profileCard";
 import { overallHead } from "../../data/teamData";
 
-export default function OC() {
+export default function OC( {ocinfo} ) {
   return (
     <main className="bg-black text-white px-6 py-24">
       <div className="max-w-6xl mx-auto">
@@ -18,10 +18,10 @@ export default function OC() {
           <div className="flex justify-center">
             <ProfileCard
               key="Overall Coordinator"
-              name={overallHead.name}
-              photoSrc={overallHead.photoSrc}
-              gmailAddress={overallHead.gmailAddress}
-              linkedinURL={overallHead.linkedinURL}
+              name={ocinfo[0].team_member_name}
+              photoSrc={ocinfo[0].team_member_photo?.url}
+              gmailAddress={ocinfo[0].team_member_mail}
+              linkedinURL={ocinfo[0].team_member_linked_in}
               large
             />
           </div>

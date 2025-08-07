@@ -31,18 +31,32 @@ export default async function TeamPage() {
         return allMembers.filter((member) => member.head_or_manager === "HEAD");
     };
 
+    const fliterOC = () => {
+        return allMembers.filter((member) => (member.head_or_manager === "OC"));
+    };
+
+
+     const fliterViceOC = () => {
+        return allMembers.filter((member) => (member.head_or_manager === "VICE OC"));
+    };
+
+    console.log(fliterOC())
+    console.log(fliterViceOC())
+
+
+
     return (
         <>
             <HeroSectionTeam />
-            <OC members={filterByDomain("OC")} />
-            <VICEOC members={filterByDomain("VICEOC")} />
+            <OC ocinfo={fliterOC()} />
+            <VICEOC vocInfo={fliterViceOC()} />
             <DomainHeads members={getHeads()} />
             <Operations members={filterByDomain("OPS")} />
             <CrF members={filterByDomain("CRF")} />
-            <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} />
+            {/* <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} /> */}
             <Ideation members={filterByDomain("IDEATION")} />
             <Web members={filterByDomain("WEB")} />
-            <DesignAndCreatives members={filterByDomain("DESIGN")} />
+            {/* <DesignAndCreatives members={filterByDomain("DESIGN")} /> */}
             <PrN members={filterByDomain("PRN")} />
             <Events members={filterByDomain("EVENTS")} />
         </>

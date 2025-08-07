@@ -75,6 +75,7 @@ export interface Config {
     previousSpeakers: PreviousSpeaker;
     sessions: Session;
     foundersHiveImages: FoundersHiveImage;
+    sponsorshipPartners: SponsorshipPartner;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -89,6 +90,7 @@ export interface Config {
     previousSpeakers: PreviousSpeakersSelect<false> | PreviousSpeakersSelect<true>;
     sessions: SessionsSelect<false> | SessionsSelect<true>;
     foundersHiveImages: FoundersHiveImagesSelect<false> | FoundersHiveImagesSelect<true>;
+    sponsorshipPartners: SponsorshipPartnersSelect<false> | SponsorshipPartnersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -256,6 +258,22 @@ export interface FoundersHiveImage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsorshipPartners".
+ */
+export interface SponsorshipPartner {
+  id: number;
+  name?: string | null;
+  images?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -292,6 +310,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'foundersHiveImages';
         value: number | FoundersHiveImage;
+      } | null)
+    | ({
+        relationTo: 'sponsorshipPartners';
+        value: number | SponsorshipPartner;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -450,6 +472,21 @@ export interface SessionsSelect<T extends boolean = true> {
  */
 export interface FoundersHiveImagesSelect<T extends boolean = true> {
   founders_hive_image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsorshipPartners_select".
+ */
+export interface SponsorshipPartnersSelect<T extends boolean = true> {
+  name?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
