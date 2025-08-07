@@ -53,10 +53,10 @@ export default async function TeamPage() {
             <DomainHeads members={getHeads()} />
             <Operations members={filterByDomain("OPS")} />
             <CrF members={filterByDomain("CRF")} />
-            <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} />
+            {/* <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} /> */}
             <Ideation members={filterByDomain("IDEATION")} />
             <Web members={filterByDomain("WEB")} />
-            <DesignAndCreatives members={filterByDomain("DESIGN")} />
+            {/* <DesignAndCreatives members={filterByDomain("DESIGN")} /> */}
             <PrN members={filterByDomain("PRN")} />
             <Events members={filterByDomain("EVENTS")} />
         </>
