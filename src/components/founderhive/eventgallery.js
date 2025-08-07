@@ -1,16 +1,6 @@
 import AnimatedSection from "../homeComponents/animatedSection";
 
-export default function EventGallery() {
-  const galleryImages = [
-    { src: '/EcellLogo.png', alt: "Image 1" },
-    { src: null, alt: "Image 2" },
-    { src: null, alt: "Image 3" },
-    { src: null, alt: "Image 4" },
-    { src: null, alt: "Image 5" },
-    { src: null, alt: "Image 6" },
-    { src: null, alt: "Image 7" },
-    { src: null, alt: "Image 8" },
-  ];
+export default function EventGallery( {galleryImages}) {
 
   return (
     <AnimatedSection className="text-white px-4 py-20 space-y-16">
@@ -30,8 +20,8 @@ export default function EventGallery() {
             className="overflow-hidden rounded-xl border border-purple-200 bg-purple-900/10 transition duration-300 transform hover:scale-105 hover:shadow-lg hover:border-purple-400"
           >
             <img
-              src={image.src}
-              alt={image.alt}
+              src={image.founders_hive_image?.url}
+              alt="founders hive image"
               className="w-full h-60 object-cover rounded-xl transition duration-300 hover:scale-110"
             />
           </div>

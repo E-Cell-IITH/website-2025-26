@@ -4,7 +4,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import StartUpsClient from './StartupsClient.js'
 
-export default async function Alumni() {
+export default async function StartUpsPage() {
   const payload = await getPayload({ config });
 
   const startups = await payload.find({
