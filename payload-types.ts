@@ -73,6 +73,8 @@ export interface Config {
     team: Team;
     collaborations: Collaboration;
     previousSpeakers: PreviousSpeaker;
+    sessions: Session;
+    foundersHiveImages: FoundersHiveImage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +87,8 @@ export interface Config {
     team: TeamSelect<false> | TeamSelect<true>;
     collaborations: CollaborationsSelect<false> | CollaborationsSelect<true>;
     previousSpeakers: PreviousSpeakersSelect<false> | PreviousSpeakersSelect<true>;
+    sessions: SessionsSelect<false> | SessionsSelect<true>;
+    foundersHiveImages: FoundersHiveImagesSelect<false> | FoundersHiveImagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -219,6 +223,39 @@ export interface PreviousSpeaker {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sessions".
+ */
+export interface Session {
+  id: number;
+  city?: string | null;
+  date?: string | null;
+  venue?: string | null;
+  registrations?: number | null;
+  mentor_name?: string | null;
+  mentor_role?: string | null;
+  mentor_bio?: string | null;
+  itinerary?:
+    | {
+        title?: string | null;
+        duration?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "foundersHiveImages".
+ */
+export interface FoundersHiveImage {
+  id: number;
+  founders_hive_image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -247,6 +284,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'previousSpeakers';
         value: number | PreviousSpeaker;
+      } | null)
+    | ({
+        relationTo: 'sessions';
+        value: number | Session;
+      } | null)
+    | ({
+        relationTo: 'foundersHiveImages';
+        value: number | FoundersHiveImage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -374,6 +419,37 @@ export interface PreviousSpeakersSelect<T extends boolean = true> {
   speaker_name?: T;
   speaker_position?: T;
   speaker_image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sessions_select".
+ */
+export interface SessionsSelect<T extends boolean = true> {
+  city?: T;
+  date?: T;
+  venue?: T;
+  registrations?: T;
+  mentor_name?: T;
+  mentor_role?: T;
+  mentor_bio?: T;
+  itinerary?:
+    | T
+    | {
+        title?: T;
+        duration?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "foundersHiveImages_select".
+ */
+export interface FoundersHiveImagesSelect<T extends boolean = true> {
+  founders_hive_image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

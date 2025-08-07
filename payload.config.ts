@@ -14,6 +14,8 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { Team } from '@/collections/Team'
 import { Collaborations } from '@/collections/Collaborations'
 import { PreviousSpeakers } from '@/collections/PreviousSpeakers'
+import { FoundersHive } from '@/collections/FoundersHive'
+import { FoundersHiveImages } from '@/collections/FoundersHiveImages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, StartUps, Team, Collaborations, PreviousSpeakers],
+  collections: [Users, Media, StartUps, Team, Collaborations,PreviousSpeakers,FoundersHive,FoundersHiveImages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
