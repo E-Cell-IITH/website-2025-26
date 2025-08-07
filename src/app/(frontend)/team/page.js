@@ -12,7 +12,6 @@ import HeroSectionTeam from "@/components/teamComponents/HeroSection"
 import { getPayload } from "payload";
 import config from "@payload-config";
 import VICEOC from "../../../components/teamComponents/ViceOC"
-import { convertSlateNodesToLexical } from "@payloadcms/richtext-lexical/migrate"
 
 export default async function TeamPage() {
     const payload = await getPayload({ config });

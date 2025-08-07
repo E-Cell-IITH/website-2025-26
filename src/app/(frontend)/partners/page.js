@@ -17,30 +17,44 @@ import TrainingPartnerSection from "@/components/Partners/TrainingPartner"
 import InternshipPartnerSection from "@/components/Partners/InternshipPartner"
 import WorkshopPartnerSection from "@/components/Partners/WorkshopPartner"
 import MediaPartnerSection from "@/components/Partners/MediaPartner"
+import { getPayload } from "payload";
+import config from "@payload-config";
 
 
-export default function partners(){
+
+export default async function partners() {
+
+    const payload = await getPayload({ config });
+
+    const sponsorshipPartners = await payload.find({
+        collection: "sponsorshipPartners",
+        limit: 1000000,
+    });
+
+    console.log(sponsorshipPartners.docs)
+
+
     return (
         <>
-        <MainSection />
-        <TitleSponsorSection />
-        <CoTitleSponsorSection />
-        <SilveSponsorSection />
-        <DevPartnerSection />
-        <EneryPartnerSection />
-        <ConsultingPartnerSection />
-        <SportingPartnerSection />
-        <LodgePartnerSection />
-        <MovingPartnerSection />
-        <EventPartnerSection />
-        <TravelPartnerSection />
-        <PlatformPartnerSection />
-        <EducationPartnerSection />
-        <MerchandisePartnerSection />
-        <TrainingPartnerSection />
-        <InternshipPartnerSection />
-        <WorkshopPartnerSection />
-        <MediaPartnerSection />
+            <MainSection />
+            <TitleSponsorSection />
+            <CoTitleSponsorSection />
+            <SilveSponsorSection />
+            <DevPartnerSection />
+            <EneryPartnerSection />
+            <ConsultingPartnerSection />
+            <SportingPartnerSection />
+            <LodgePartnerSection />
+            <MovingPartnerSection />
+            <EventPartnerSection />
+            <TravelPartnerSection />
+            <PlatformPartnerSection />
+            <EducationPartnerSection />
+            <MerchandisePartnerSection />
+            <TrainingPartnerSection />
+            <InternshipPartnerSection />
+            <WorkshopPartnerSection />
+            <MediaPartnerSection />
         </>
     )
 }
