@@ -12,6 +12,7 @@ import HeroSectionTeam from "@/components/teamComponents/HeroSection"
 import { getPayload } from "payload";
 import config from "@payload-config";
 import VICEOC from "../../../components/teamComponents/ViceOC"
+import { convertSlateNodesToLexical } from "@payloadcms/richtext-lexical/migrate"
 
 export default async function TeamPage() {
     const payload = await getPayload({ config });
@@ -31,11 +32,25 @@ export default async function TeamPage() {
         return allMembers.filter((member) => member.head_or_manager === "HEAD");
     };
 
+    const fliterOC = () => {
+        return allMembers.filter((member) => (member.head_or_manager === "OC"));
+    };
+
+
+     const fliterViceOC = () => {
+        return allMembers.filter((member) => (member.head_or_manager === "VICE OC"));
+    };
+
+    console.log(fliterOC())
+    console.log(fliterViceOC())
+
+
+
     return (
         <>
             <HeroSectionTeam />
-            <OC members={filterByDomain("OC")} />
-            <VICEOC members={filterByDomain("VICEOC")} />
+            <OC ocinfo={fliterOC()} />
+            <VICEOC vocInfo={fliterViceOC()} />
             <DomainHeads members={getHeads()} />
             <Operations members={filterByDomain("OPS")} />
             <CrF members={filterByDomain("CRF")} />

@@ -1,7 +1,7 @@
 import ProfileCard from "./profileCard";
 import { viceOc } from "../../data/teamData";
 
-export default function VICEOC() {
+export default function VICEOC( {vocInfo} ) {
   return (
     <main className="bg-black text-white px-6 py-24">
       <div className="max-w-6xl mx-auto">
@@ -16,10 +16,10 @@ export default function VICEOC() {
           <div className="flex justify-center">
             <ProfileCard
               key="Vice OC"
-              name={viceOc.name}
-              photoSrc={viceOc.photoSrc}
-              gmailAddress={viceOc.gmailAddress}
-              linkedinURL={viceOc .linkedinURL}
+              name={vocInfo[0]?.team_member_name}
+              photoSrc={vocInfo[0]?.team_member_photo?.url}
+              gmailAddress={vocInfo[0]?.team_member_mail}
+              linkedinURL={vocInfo[0]?.team_member_linked_in}
               large
             />
           </div>

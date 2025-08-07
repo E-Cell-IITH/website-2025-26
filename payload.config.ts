@@ -16,6 +16,7 @@ import { Collaborations } from '@/collections/Collaborations'
 import { PreviousSpeakers } from '@/collections/PreviousSpeakers'
 import { FoundersHive } from '@/collections/FoundersHive'
 import { FoundersHiveImages } from '@/collections/FoundersHiveImages'
+import { SponsorshipPartners } from '@/collections/Partners'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, StartUps, Team, Collaborations,PreviousSpeakers,FoundersHive,FoundersHiveImages],
+  collections: [Users, Media, StartUps, Team, Collaborations,PreviousSpeakers,FoundersHive,FoundersHiveImages,SponsorshipPartners],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
