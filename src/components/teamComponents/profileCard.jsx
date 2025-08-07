@@ -13,7 +13,7 @@ export default function ProfileCard({
 
   return (
     <div
-      className={`relative flex flex-col items-center text-center p-6 rounded-xl transition-all duration-300 ${isHovered ? "hovered" : ""}`}
+      className={`relative flex flex-col items-center text-center p-6 rounded-xl transition-all duration-300 cursor-pointer ${isHovered ? "hovered" : ""}`}
       onClick={toggleHover}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

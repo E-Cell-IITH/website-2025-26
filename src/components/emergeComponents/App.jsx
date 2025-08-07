@@ -59,20 +59,18 @@ export default function RegistrationForm() {
         setSubmissionStatus('submitting');
 
         try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycbya7RoG7QJ3-qR2s6o1thMySAiwnFV54wbKnB6MIUWVkD508exu2wy126Khc1aT1Ac/exec", {
+            const response = await fetch("my-url", {
                 method: "POST",
                 redirect: "follow",
                 headers: {
-                    "Content-Type": "plain/text",
+                    "Content-Type": "text/plain;charset=utf-8",
                 },
                 body: JSON.stringify({
                     ...formData,
                     registrationType,
                 }),
             });
-
             const result = await response.json();
-
             if (result.status === 'success') {
                 setShowSuccessModal(true);
                 setSubmissionStatus('success');

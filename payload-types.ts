@@ -69,6 +69,10 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    startups: Startup;
+    team: Team;
+    collaborations: Collaboration;
+    previousSpeakers: PreviousSpeaker;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,12 +81,16 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    startups: StartupsSelect<false> | StartupsSelect<true>;
+    team: TeamSelect<false> | TeamSelect<true>;
+    collaborations: CollaborationsSelect<false> | CollaborationsSelect<true>;
+    previousSpeakers: PreviousSpeakersSelect<false> | PreviousSpeakersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {};
   globalsSelect: {};
@@ -118,7 +126,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -142,8 +150,9 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -158,23 +167,91 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "startups".
+ */
+export interface Startup {
+  id: number;
+  start_up_name?: string | null;
+  start_up_founder?: string | null;
+  start_up_logo?: (number | null) | Media;
+  start_up_website?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team".
+ */
+export interface Team {
+  id: number;
+  team_member_name?: string | null;
+  head_or_manager?: ('HEAD' | 'MANAGER' | 'OC' | 'VICE OC') | null;
+  enter_domain?:
+    | ('WEB' | 'PRN' | 'CRF' | 'OPS' | 'IDEATION' | 'MEDIA_OUTREACH' | 'MULTIMEDIA' | 'DESIGN' | 'EVENTS' | 'MARKETING')
+    | null;
+  team_member_photo?: (number | null) | Media;
+  team_member_linked_in?: string | null;
+  team_member_mail?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collaborations".
+ */
+export interface Collaboration {
+  id: number;
+  collaborations_logo?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "previousSpeakers".
+ */
+export interface PreviousSpeaker {
+  id: number;
+  speaker_name?: string | null;
+  speaker_position?: string | null;
+  speaker_image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'startups';
+        value: number | Startup;
+      } | null)
+    | ({
+        relationTo: 'team';
+        value: number | Team;
+      } | null)
+    | ({
+        relationTo: 'collaborations';
+        value: number | Collaboration;
+      } | null)
+    | ({
+        relationTo: 'previousSpeakers';
+        value: number | PreviousSpeaker;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -184,10 +261,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -207,7 +284,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -241,6 +318,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -252,6 +330,52 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "startups_select".
+ */
+export interface StartupsSelect<T extends boolean = true> {
+  start_up_name?: T;
+  start_up_founder?: T;
+  start_up_logo?: T;
+  start_up_website?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team_select".
+ */
+export interface TeamSelect<T extends boolean = true> {
+  team_member_name?: T;
+  head_or_manager?: T;
+  enter_domain?: T;
+  team_member_photo?: T;
+  team_member_linked_in?: T;
+  team_member_mail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collaborations_select".
+ */
+export interface CollaborationsSelect<T extends boolean = true> {
+  collaborations_logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "previousSpeakers_select".
+ */
+export interface PreviousSpeakersSelect<T extends boolean = true> {
+  speaker_name?: T;
+  speaker_position?: T;
+  speaker_image?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
