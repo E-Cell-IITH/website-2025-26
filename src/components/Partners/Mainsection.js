@@ -53,10 +53,10 @@ export default function HeroSection() {
 
 
         <div className="relative w-full h-screen">
-          {/* Main Heading - Always show "COLLABORATIONS" */}
+          
           <div className="absolute top-[40%] left-0 right-0 text-center p-4 pt-2 z-20 animate-slide-up">
             <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl animated-gradient-text">
-              COLLABORATIONS
+              PARTNERS
             </h1>
           </div>
 
@@ -64,10 +64,10 @@ export default function HeroSection() {
           <div
             id="ecell-subtitle"
             data-animate
-            className={`absolute left-0 right-0 text-center p-4 pt-2 z-20 transition-all duration-1000 delay-300 transform ${
+            className={`absolute left-0 right-0 text-center p-4 pt-2 z-20 transition-all duration-900 delay-20 transform ${
               isVisible['ecell-subtitle']
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-10 opacity-0'
+                ? 'translate-y-20 opacity-100'
+                : 'translate-y-30 opacity-0'
             }`}
             style={{
               top: 'clamp(20rem, 38vh, 30rem)',
