@@ -37,7 +37,7 @@ export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState(events[0]);
 
   return (
-    <main className="min-h-screen bg-black text-white flex items-start justify-center px-4 md:px-8 lg:px-16 py-10">
+    <main className="bg-black text-white flex items-start justify-center px-4 md:px-8 lg:px-16 py-10">
       <div className="flex flex-col md:flex-row w-full max-w-6xl">
         {/* Left side */}
         <div className="w-full md:w-1/3 mb-10 md:mb-0">

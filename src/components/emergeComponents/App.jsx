@@ -25,21 +25,49 @@ const BulletPoint = () => <span className="text-fuchsia-400 text-3xl mr-4 mt-1">
 export default function RegistrationForm() {
     const [registrationType, setRegistrationType] = useState('individual');
 
-    const [formData, setFormData] = useState({
-        collegeName: '', city: '', state: '', teamName: '',
-        individualName: '', individualEmail: '', individualPhone: '', individualYearDept: '',
-        teamSize: '3', competitionInterest: 'no',
-        primaryPocName: '', primaryPocPhone: '', primaryPocEmail: '',
-        secondaryPocName: '', secondaryPocPhone: '', secondaryPocEmail: '',
-        utrNumber: '', confirmStudents: false, confirmPhysicalPresence: false, confirmTeamSize: false,
+    // Initial form data with registrationType included
+    const getInitialFormData = () => ({
+        registrationType: 'individual',
+        collegeName: '', 
+        city: '', 
+        state: '', 
+        teamName: '',
+        individualName: '', 
+        individualEmail: '', 
+        individualPhone: '', 
+        individualYearDept: '',
+        teamSize: '0', // Default to 0 for individuals
+        competitionInterest: 'no',
+        primaryPocName: '', 
+        primaryPocPhone: '', 
+        primaryPocEmail: '',
+        secondaryPocName: '', 
+        secondaryPocPhone: '', 
+        secondaryPocEmail: '',
+        utrNumber: '', 
+        confirmStudents: false, 
+        confirmPhysicalPresence: false, 
+        confirmTeamSize: false,
     });
 
+    const [formData, setFormData] = useState(getInitialFormData());
     const [submissionStatus, setSubmissionStatus] = useState(null); // 'submitting', 'success', 'error'
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    };
+
+    // Handle registration type change with team size reset
+    const handleRegistrationTypeChange = (e) => {
+        const newType = e.target.value;
+        setRegistrationType(newType);
+        setFormData(prev => ({
+            ...prev,
+            registrationType: newType,
+            teamSize: newType === 'team' ? '3' : '0' // Set team size based on registration type
+        }));
     };
 
     const amountToPay = useMemo(() => {
@@ -58,8 +86,13 @@ export default function RegistrationForm() {
         e.preventDefault();
         setSubmissionStatus('submitting');
 
+        // console.log(formData);
+
         try {
-            const response = await fetch("my-url", {
+            // Simulate successful submission for now
+            // Uncomment the actual API call when ready
+        
+            const response = await fetch("https://script.google.com/macros/s/AKfycbz_KXAmE1qzGNUbep3c6SpopiALV3n2pP7MW82VJz_azYmtdIc7Rc7_6PmGT1wI_U4/exec", {
                 method: "POST",
                 redirect: "follow",
                 headers: {
@@ -77,16 +110,31 @@ export default function RegistrationForm() {
             } else {
                 throw new Error(result.message || 'Unknown error');
             }
+
+            
+            // Simulate success for demo
+            setTimeout(() => {
+                setShowSuccessModal(true);
+                setSubmissionStatus('success');
+                // Clear the form after successful submission
+                setFormData(getInitialFormData());
+                setRegistrationType('individual');
+            }, 1000);
+            
         } catch (err) {
             console.error(err);
             setSubmissionStatus('error');
         }
     };
 
+    const handleSuccessModalClose = () => {
+        setShowSuccessModal(false);
+        setSubmissionStatus(null);
+    };
 
     return (
         <>
-            {showSuccessModal && <SuccessModal onClose={() => setShowSuccessModal(false)} />}
+            {showSuccessModal && <SuccessModal onClose={handleSuccessModalClose} />}
             <div className="min-h-screen text-gray-200">
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                     <div className="max-w-5xl mx-auto py-12 sm:py-16">
@@ -122,7 +170,16 @@ export default function RegistrationForm() {
                             {/* --- Section 2: Registration Type --- */}
                             <div>
                                 <SectionHeader title="Section 2: Registration Type" />
-                                <RadioGroup name="registrationType" legend="Are you registering as an individual or a team?" options={[{ value: 'individual', label: 'Individual (I\'m attending alone)' }, { value: 'team', label: 'Team (We\'re attending as a group)' }]} selectedValue={registrationType} onChange={(e) => setRegistrationType(e.target.value)} />
+                                <RadioGroup 
+                                    name="registrationType" 
+                                    legend="Are you registering as an individual or a team?" 
+                                    options={[
+                                        { value: 'individual', label: 'Individual (I\'m attending alone)' }, 
+                                        { value: 'team', label: 'Team (We\'re attending as a group)' }
+                                    ]} 
+                                    selectedValue={registrationType} 
+                                    onChange={handleRegistrationTypeChange} 
+                                />
                             </div>
 
                             {/* --- Conditional Sections --- */}
@@ -180,7 +237,7 @@ export default function RegistrationForm() {
                                     <p className="text-xl text-gray-400 mb-6 leading-relaxed text-center">Please pay the total amount to the UPI ID: <strong className="text-gray-200">ecell@iithyderabad.upi</strong> or scan the QR code below.</p>
                                     <img src="https://placehold.co/224x224/111827/ffffff?text=QR+Code" alt="QR Code for payment" className="w-56 h-56 mx-auto my-6 rounded-lg" />
                                     <div className="mt-8">
-                                        <InputField id="utrNumber" label="Enter UTR Number" placeholder="e.g., TXN123456789" value={formData.utrNumber} onChange={handleInputChange} />
+                                        <InputField id="utrNumber" label="Enter UTR Number" placeholder="UTR123456789" value={formData.utrNumber} onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </div>
