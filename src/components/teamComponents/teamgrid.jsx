@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TeamGrid({ sectionTitle, members, description }) {
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
+    <div className="bg-black text-white px-6 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
           {/* Enhanced section title with better text sizing */}
