@@ -40,11 +40,6 @@ export default async function TeamPage() {
         return allMembers.filter((member) => (member.head_or_manager === "VICE OC"));
     };
 
-    console.log(fliterOC())
-    console.log(fliterViceOC())
-
-
-
     return (
         <>
             <HeroSectionTeam />
