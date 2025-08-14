@@ -185,7 +185,8 @@ export default function RegistrationForm() {
         e.preventDefault();
         setSubmissionStatus('submitting');
 
-        const EMERGE_DEPLOYMENT_LINK = process.env.EMERGE_DEPLOYMENT_LINK
+        const EMERGE_DEPLOYMENT_LINK = process.env.NEXT_PUBLIC_EMERGE_DEPLOYMENT_LINK
+        // console.log(EMERGE_DEPLOYMENT_LINK)
 
         try {
             const response = await fetch(EMERGE_DEPLOYMENT_LINK, {
