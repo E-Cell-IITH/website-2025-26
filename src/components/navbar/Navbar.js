@@ -88,7 +88,7 @@ export default function Navbarlayout() {
                 <Link
                   href={item.href}
                   onClick={handleClose}
-                  className="group relative block text-4xl text-white tracking-wider hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-400 hover:to-purple-400 transition-all duration-300 ease-out hover:scale-110 hover:translate-x-4"
+                  className="group relative block text-4xl text-white tracking-wider hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-400 hover:to-purple-400 transition-all duration-300 ease-out hover:scale-110 hover:translate-x-4"
                 >
                   <span className="relative z-10">{item.label}</span>
                   {/* Hover glow effect */}
