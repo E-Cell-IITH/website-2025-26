@@ -12,6 +12,7 @@ const navItems = [
   { label: 'MUN', href: '/mun' },
   { label: 'PARTNERS', href: '/partners' },
   { label: 'IITH STARTUPS', href: '/startups' },
+  { label: 'CAMPUS MAP', href: '/map' },
 ];
 
 export default function Navbarlayout() {
