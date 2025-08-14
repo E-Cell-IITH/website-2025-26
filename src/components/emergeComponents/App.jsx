@@ -500,11 +500,11 @@ export default function RegistrationForm() {
 
                                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
                                         <div className="flex justify-center mb-4">
-                                            <div className="w-40 h-40 bg-gray-700 rounded-lg flex items-center justify-center border border-gray-600">
+                                            <div className="bg-gray-700 rounded-lg flex items-center justify-center border border-gray-600">
                                                 <img
-                                                    src="https://placehold.co/160x160/374151/9ca3af?text=QR+Code"
+                                                    src="/ecell-emerge.jpeg"
                                                     alt="QR Code for payment"
-                                                    className="w-36 h-36 rounded"
+                                                    className="rounded"
                                                 />
                                             </div>
                                         </div>
