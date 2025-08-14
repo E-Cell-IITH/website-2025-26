@@ -1,57 +1,157 @@
-// src/components/RegistrationForm.jsx
-
 "use client";
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
-// --- Component Placeholders ---
-// NOTE: Ensure you have these components created in your project.
+// --- Enhanced Component Design ---
 const InputField = ({ id, label, value, onChange, placeholder, type = "text", optional = false }) => (
-    <div>
-        <label htmlFor={id} className="block text-xl font-medium text-gray-300 mb-3">{label} {optional && <span className="text-gray-400">(optional)</span>}</label>
-        <input type={type} id={id} name={id} className="w-full px-6 py-4 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition text-xl" placeholder={placeholder} value={value} onChange={onChange} required={!optional} />
+    <div className="group">
+        <label htmlFor={id} className="block text-sm font-medium text-gray-400 mb-2 transition-colors group-focus-within:text-white">
+            {label} {optional && <span className="text-gray-600 text-xs font-normal">(optional)</span>}
+        </label>
+        <input
+            type={type}
+            id={id}
+            name={id}
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200 placeholder-gray-500 hover:bg-gray-750"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            required={!optional}
+        />
     </div>
 );
-const CheckboxField = ({ id, label, checked, onChange }) => (
-    <div className="flex items-center"><input id={id} name={id} type="checkbox" className="h-6 w-6 rounded border-gray-600 bg-gray-800 text-fuchsia-600 focus:ring-fuchsia-500" checked={checked} onChange={onChange} /><label htmlFor={id} className="ml-4 text-xl text-gray-300">{label}</label></div>
-);
-const RadioGroup = ({ name, legend, options, selectedValue, onChange }) => (
-    <fieldset><legend className="text-xl font-medium text-gray-300 mb-4">{legend}</legend><div className="space-y-4">{options.map(opt => <div key={opt.value} className="flex items-center"><input type="radio" id={`${name}-${opt.value}`} name={name} value={opt.value} checked={selectedValue === opt.value} onChange={onChange} className="h-5 w-5 text-fuchsia-600 bg-gray-800 border-gray-600 focus:ring-fuchsia-500" /><label htmlFor={`${name}-${opt.value}`} className="ml-4 text-xl text-gray-200">{opt.label}</label></div>)}</div></fieldset>
-);
-const SectionHeader = ({ title }) => <h2 className="text-4xl font-bold border-b-2 border-fuchsia-500 pb-4 mb-10 text-white">{title}</h2>;
-const SuccessModal = ({ onClose }) => (<div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"><div className="bg-gray-800 p-10 rounded-lg text-center shadow-2xl border border-fuchsia-500"><h3 className="text-3xl font-bold text-green-400 mb-4">Registration Successful!</h3><p className="text-xl text-gray-300 mb-8">Your details have been recorded. See you at E-MERGE '25!</p><button onClick={onClose} className="bg-fuchsia-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-fuchsia-700 transition-colors">Close</button></div></div>);
-const BulletPoint = () => <span className="text-fuchsia-400 text-3xl mr-4 mt-1">▪</span>;
 
+const CheckboxField = ({ id, label, checked, onChange }) => (
+    <div className="flex items-start group">
+        <input
+            id={id}
+            name={id}
+            type="checkbox"
+            className="mt-1 h-4 w-4 rounded border-gray-600 bg-gray-800 text-white focus:ring-2 focus:ring-white transition-all duration-200"
+            checked={checked}
+            onChange={onChange}
+        />
+        <label htmlFor={id} className="ml-3 text-gray-300 leading-relaxed group-hover:text-white transition-colors cursor-pointer text-sm">
+            {label}
+        </label>
+    </div>
+);
+
+const RadioGroup = ({ name, legend, options, selectedValue, onChange }) => (
+    <fieldset className="space-y-3">
+        <legend className="text-sm font-medium text-gray-400 mb-3">{legend}</legend>
+        <div className="space-y-2">
+            {options.map(opt => (
+                <div key={opt.value} className="flex items-start group cursor-pointer">
+                    <input
+                        type="radio"
+                        id={`${name}-${opt.value}`}
+                        name={name}
+                        value={opt.value}
+                        checked={selectedValue === opt.value}
+                        onChange={onChange}
+                        className="mt-1 h-4 w-4 text-white bg-gray-800 border-gray-600 focus:ring-2 focus:ring-white transition-all duration-200"
+                    />
+                    <label
+                        htmlFor={`${name}-${opt.value}`}
+                        className="ml-3 text-gray-300 leading-relaxed group-hover:text-white transition-colors cursor-pointer text-sm"
+                    >
+                        {opt.label}
+                    </label>
+                </div>
+            ))}
+        </div>
+    </fieldset>
+);
+
+const SectionHeader = ({ title }) => (
+    <div className="mb-6">
+        <h2 className="text-xl font-semibold text-white mb-2">{title}</h2>
+        <div className="h-px w-12 bg-white"></div>
+    </div>
+);
+
+const SuccessModal = ({ onClose }) => (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+        <div className="bg-gray-900 border border-gray-800 p-8 rounded-lg text-center shadow-xl max-w-md w-full">
+            <div className="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Registration Successful!</h3>
+            <p className="text-gray-400 mb-6 text-sm">Your details have been recorded. See you at E-MERGE '25!</p>
+            <button
+                onClick={onClose}
+                className="bg-white text-black font-medium py-2 px-6 rounded-lg hover:bg-gray-200 transition-colors duration-200"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+);
+
+const ScrollReveal = ({ children, className = "" }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [ref, setRef] = useState(null);
+
+    useEffect(() => {
+        if (!ref) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(ref);
+        return () => observer.unobserve(ref);
+    }, [ref]);
+
+    return (
+        <div
+            ref={setRef}
+            className={`transition-all duration-700 ${isVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
+                } ${className}`}
+        >
+            {children}
+        </div>
+    );
+};
 
 export default function RegistrationForm() {
     const [registrationType, setRegistrationType] = useState('individual');
 
-    // Initial form data with registrationType included
     const getInitialFormData = () => ({
         registrationType: 'individual',
-        collegeName: '', 
-        city: '', 
-        state: '', 
+        collegeName: '',
+        city: '',
+        state: '',
         teamName: '',
-        individualName: '', 
-        individualEmail: '', 
-        individualPhone: '', 
+        individualName: '',
+        individualEmail: '',
+        individualPhone: '',
         individualYearDept: '',
-        teamSize: '0', // Default to 0 for individuals
+        teamSize: '0',
         competitionInterest: 'no',
-        primaryPocName: '', 
-        primaryPocPhone: '', 
+        primaryPocName: '',
+        primaryPocPhone: '',
         primaryPocEmail: '',
-        secondaryPocName: '', 
-        secondaryPocPhone: '', 
+        secondaryPocName: '',
+        secondaryPocPhone: '',
         secondaryPocEmail: '',
-        utrNumber: '', 
-        confirmStudents: false, 
-        confirmPhysicalPresence: false, 
+        utrNumber: '',
+        confirmStudents: false,
+        confirmPhysicalPresence: false,
         confirmTeamSize: false,
     });
 
     const [formData, setFormData] = useState(getInitialFormData());
-    const [submissionStatus, setSubmissionStatus] = useState(null); // 'submitting', 'success', 'error'
+    const [submissionStatus, setSubmissionStatus] = useState(null);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleInputChange = (e) => {
@@ -59,14 +159,13 @@ export default function RegistrationForm() {
         setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     };
 
-    // Handle registration type change with team size reset
     const handleRegistrationTypeChange = (e) => {
         const newType = e.target.value;
         setRegistrationType(newType);
         setFormData(prev => ({
             ...prev,
             registrationType: newType,
-            teamSize: newType === 'team' ? '3' : '0' // Set team size based on registration type
+            teamSize: newType === 'team' ? '3' : '0'
         }));
     };
 
@@ -86,13 +185,10 @@ export default function RegistrationForm() {
         e.preventDefault();
         setSubmissionStatus('submitting');
 
-        // console.log(formData);
+        const EMERGE_DEPLOYMENT_LINK = process.env.EMERGE_DEPLOYMENT_LINK
 
         try {
-            // Simulate successful submission for now
-            // Uncomment the actual API call when ready
-        
-            const response = await fetch("https://script.google.com/macros/s/AKfycbz_KXAmE1qzGNUbep3c6SpopiALV3n2pP7MW82VJz_azYmtdIc7Rc7_6PmGT1wI_U4/exec", {
+            const response = await fetch(EMERGE_DEPLOYMENT_LINK, {
                 method: "POST",
                 redirect: "follow",
                 headers: {
@@ -111,16 +207,13 @@ export default function RegistrationForm() {
                 throw new Error(result.message || 'Unknown error');
             }
 
-            
-            // Simulate success for demo
             setTimeout(() => {
                 setShowSuccessModal(true);
                 setSubmissionStatus('success');
-                // Clear the form after successful submission
                 setFormData(getInitialFormData());
                 setRegistrationType('individual');
             }, 1000);
-            
+
         } catch (err) {
             console.error(err);
             setSubmissionStatus('error');
@@ -135,130 +228,357 @@ export default function RegistrationForm() {
     return (
         <>
             {showSuccessModal && <SuccessModal onClose={handleSuccessModalClose} />}
-            <div className="min-h-screen text-gray-200">
-                <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-                    <div className="max-w-5xl mx-auto py-12 sm:py-16">
-                        <div className="relative flex flex-col items-center justify-center min-h-[92vh] text-center p-4">
-                            <h1 className="custom-heading text-glow text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-semibold mb-6 bg-gradient-to-r from-white via-purple-300 to-purple-500 bg-clip-text text-transparent transition-opacity duration-200">
-                                E-MERGE '25
-                            </h1>
 
-                            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-8 animate-pulse"></div>
-                            <p className="mt-6 text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-gray-400 via-gray-300 to-blue-300 bg-clip-text text-transparent">
-                                12th October 2025 | Organized by E-Cell, IIT Hyderabad
-                            </p>
-                        </div>
-                        <div className="mb-20 p-6 sm:p-8">
-                            <p className="text-2xl lg:text-3xl text-gray-300 mb-10 leading-relaxed">Welcome to the official registration form for E-MERGE '25 — a national celebration of ideas, innovation, and student entrepreneurship. Choose between:</p>
-                            <div className="space-y-8 text-2xl text-gray-200">
-                                <div className="flex"><BulletPoint /><p><strong>E-MERGE Full Access (₹750):</strong> Unlock the complete E-MERGE experience! Participate in The BoardRoom competition, attend high-impact speaker sessions, take part in immersive workshops, and more.</p></div>
-                                <div className="flex"><BulletPoint /><p><strong>E-MERGE General Access (₹599):</strong> Join us for a day of enriching speaker sessions, exciting workshops, and the buzzing Networking Arena. Does not include competition access.</p></div>
-                            </div>
-                        </div>
+            <div className="bg-black text-white min-h-screen">
+                {/* Hero Section - Full Screen */}
+                <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight">
+                        E-MERGE '25
+                    </h1>
+                    <div className="w-16 h-px bg-white mb-6"></div>
+                    <p className="text-lg text-gray-400 mb-12 max-w-2xl">
+                        12th October 2025 • Organized by E-Cell, IIT Hyderabad
+                    </p>
+                    <div className="animate-bounce">
+                        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-20">
-                            {/* --- Section 1: College Details --- */}
-                            <div>
-                                <SectionHeader title="Section 1: College Details" />
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-8">
-                                    <InputField id="collegeName" label="College Name" placeholder="e.g., Indian Institute of Technology Hyderabad" value={formData.collegeName} onChange={handleInputChange} />
-                                    <InputField id="city" label="City" placeholder="e.g., Kandi" value={formData.city} onChange={handleInputChange} />
-                                    <InputField id="state" label="State" placeholder="e.g., Telangana" value={formData.state} onChange={handleInputChange} />
-                                </div>
-                            </div>
+                {/* Content Section */}
+                <div className="px-6 pb-16">
+                    <div className="max-w-4xl mx-auto space-y-12">
 
-                            {/* --- Section 2: Registration Type --- */}
-                            <div>
-                                <SectionHeader title="Section 2: Registration Type" />
-                                <RadioGroup 
-                                    name="registrationType" 
-                                    legend="Are you registering as an individual or a team?" 
-                                    options={[
-                                        { value: 'individual', label: 'Individual (I\'m attending alone)' }, 
-                                        { value: 'team', label: 'Team (We\'re attending as a group)' }
-                                    ]} 
-                                    selectedValue={registrationType} 
-                                    onChange={handleRegistrationTypeChange} 
-                                />
-                            </div>
+                        {/* Welcome Section */}
+                        <ScrollReveal>
+                            <div className="text-center mb-16">
+                                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                                    Welcome to the official registration for E-MERGE '25 — a national celebration of ideas, innovation, and student entrepreneurship.
+                                </p>
 
-                            {/* --- Conditional Sections --- */}
-                            {registrationType === 'individual' && (
-                                <div className="mt-16 p-8 sm:p-10 border-l-4 border-fuchsia-500 bg-fuchsia-900/20 rounded-r-lg">
-                                    <h3 className="text-4xl font-bold text-white mb-8">Personal Information</h3>
-                                    <div className="space-y-10">
-                                        <InputField id="individualName" label="Full Name" placeholder="Your full name" value={formData.individualName} onChange={handleInputChange} />
-                                        <InputField id="individualEmail" label="Email Address" type="email" placeholder="you@example.com" value={formData.individualEmail} onChange={handleInputChange} />
-                                        <InputField id="individualPhone" label="Phone Number (WhatsApp preferred)" type="tel" placeholder="+91 12345 67890" value={formData.individualPhone} onChange={handleInputChange} />
-                                        <InputField id="individualYearDept" label="Year & Department" placeholder="e.g., 2nd Year, Computer Science" value={formData.individualYearDept} onChange={handleInputChange} optional={true} />
+                                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                                    <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                        <h3 className="font-semibold text-white mb-2 flex items-center justify-between">
+                                            E-MERGE Full Access
+                                            <span className="bg-white text-black text-sm px-3 py-1 rounded-full font-medium">₹750</span>
+                                        </h3>
+                                        <p className="text-gray-400 text-sm">Complete experience with BoardRoom competition, speaker sessions, workshops, and networking.</p>
                                     </div>
-                                    <div className="mt-12 p-6 bg-yellow-400/10 border border-yellow-400/30 text-yellow-200 rounded-lg text-xl"><strong>Confirmation:</strong> As an individual, you will not be eligible for The BoardRoom or Founders Forum. Your fee to be paid is ₹599.</div>
+                                    <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                        <h3 className="font-semibold text-white mb-2 flex items-center justify-between">
+                                            E-MERGE General Access
+                                            <span className="bg-white text-black text-sm px-3 py-1 rounded-full font-medium">₹599</span>
+                                        </h3>
+                                        <p className="text-gray-400 text-sm">Speaker sessions, workshops, and networking arena. Perfect for learning and connecting.</p>
+                                    </div>
                                 </div>
+                            </div>
+                        </ScrollReveal>
+
+                        {/* Registration Form */}
+                        <div className="space-y-12">
+
+                            {/* College Details */}
+                            <ScrollReveal>
+                                <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                    <SectionHeader title="College Details" />
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                        <InputField
+                                            id="collegeName"
+                                            label="College Name"
+                                            placeholder="e.g., Indian Institute of Technology Hyderabad"
+                                            value={formData.collegeName}
+                                            onChange={handleInputChange}
+                                        />
+                                        <div></div>
+                                        <InputField
+                                            id="city"
+                                            label="City"
+                                            placeholder="e.g., Kandi"
+                                            value={formData.city}
+                                            onChange={handleInputChange}
+                                        />
+                                        <InputField
+                                            id="state"
+                                            label="State"
+                                            placeholder="e.g., Telangana"
+                                            value={formData.state}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+
+                            {/* Registration Type */}
+                            <ScrollReveal>
+                                <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                    <SectionHeader title="Registration Type" />
+                                    <RadioGroup
+                                        name="registrationType"
+                                        legend="Are you registering as an individual or a team?"
+                                        options={[
+                                            { value: 'individual', label: 'Individual (I\'m attending alone)' },
+                                            { value: 'team', label: 'Team (We\'re attending as a group)' }
+                                        ]}
+                                        selectedValue={registrationType}
+                                        onChange={handleRegistrationTypeChange}
+                                    />
+                                </div>
+                            </ScrollReveal>
+
+                            {/* Individual Section */}
+                            {registrationType === 'individual' && (
+                                <ScrollReveal>
+                                    <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                        <SectionHeader title="Personal Information" />
+
+                                        <div className="space-y-6">
+                                            <InputField
+                                                id="individualName"
+                                                label="Full Name"
+                                                placeholder="Your full name"
+                                                value={formData.individualName}
+                                                onChange={handleInputChange}
+                                            />
+                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                                <InputField
+                                                    id="individualEmail"
+                                                    label="Email Address"
+                                                    type="email"
+                                                    placeholder="you@example.com"
+                                                    value={formData.individualEmail}
+                                                    onChange={handleInputChange}
+                                                />
+                                                <InputField
+                                                    id="individualPhone"
+                                                    label="Phone Number"
+                                                    type="tel"
+                                                    placeholder="+91 12345 67890"
+                                                    value={formData.individualPhone}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                            <InputField
+                                                id="individualYearDept"
+                                                label="Year & Department"
+                                                placeholder="e.g., 2nd Year, Computer Science"
+                                                value={formData.individualYearDept}
+                                                onChange={handleInputChange}
+                                                optional={true}
+                                            />
+                                        </div>
+
+                                        <div className="mt-6 p-4 bg-yellow-900/30 border border-yellow-800 rounded-lg">
+                                            <p className="text-yellow-200 text-sm">
+                                                <span className="font-medium">Note:</span> As an individual, you will not be eligible for The BoardRoom or Founders Forum. Your registration fee is ₹599.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
                             )}
 
+                            {/* Team Section */}
                             {registrationType === 'team' && (
-                                <div className="mt-16 p-8 sm:p-10 border-l-4 border-fuchsia-500 bg-fuchsia-900/20 rounded-r-lg">
-                                    <h3 className="text-4xl font-bold text-white mb-8">Team Details</h3>
-                                    <div className="space-y-14">
-                                        <InputField id="teamName" label="Team Name" placeholder="Your awesome team name" value={formData.teamName} onChange={handleInputChange} />
-                                        <div>
-                                            <label htmlFor="teamSize" className="block text-xl font-medium text-gray-300 mb-3">Number of Team Members</label>
-                                            <select id="teamSize" name="teamSize" value={formData.teamSize} onChange={handleInputChange} className="w-full px-6 py-4 bg-gray-800 border-gray-700 text-white rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition text-xl">
-                                                <option>3</option><option>4</option><option>5</option>
-                                            </select>
-                                            <p className="mt-3 text-lg text-gray-400">*Minimum 3 members required to participate in The BoardRoom.</p>
-                                        </div>
-                                        <RadioGroup name="competitionInterest" legend="Is your team interested in participating in The BoardRoom?" options={[{ value: 'yes', label: 'Yes – BoardRoom + Full Access (₹750 per person)' }, { value: 'no', label: 'No – General Access only (₹599 per person)' }]} selectedValue={formData.competitionInterest} onChange={handleInputChange} />
-                                        <div>
-                                            <h4 className="text-3xl font-semibold text-white mb-6">Point of Contact Details</h4>
-                                            <div className="space-y-10 p-8 border border-gray-700 rounded-lg bg-gray-900/40">
-                                                <h5 className="font-semibold text-2xl text-gray-100">Primary POC</h5>
-                                                <InputField id="primaryPocName" label="Primary POC Name" value={formData.primaryPocName} onChange={handleInputChange} />
-                                                <InputField id="primaryPocPhone" label="Phone Number" type="tel" value={formData.primaryPocPhone} onChange={handleInputChange} />
-                                                <InputField id="primaryPocEmail" label="Email Address" type="email" value={formData.primaryPocEmail} onChange={handleInputChange} />
-                                                <h5 className="font-semibold pt-8 border-t border-gray-700 text-2xl text-gray-100">Secondary POC</h5>
-                                                <InputField id="secondaryPocName" label="Secondary POC Name" value={formData.secondaryPocName} onChange={handleInputChange} />
-                                                <InputField id="secondaryPocPhone" label="Phone Number" type="tel" value={formData.secondaryPocPhone} onChange={handleInputChange} />
-                                                <InputField id="secondaryPocEmail" label="Email Address" type="email" value={formData.secondaryPocEmail} onChange={handleInputChange} />
+                                <ScrollReveal>
+                                    <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                        <SectionHeader title="Team Details" />
+
+                                        <div className="space-y-8">
+                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                                <InputField
+                                                    id="teamName"
+                                                    label="Team Name"
+                                                    placeholder="Your awesome team name"
+                                                    value={formData.teamName}
+                                                    onChange={handleInputChange}
+                                                />
+                                                <div>
+                                                    <label htmlFor="teamSize" className="block text-sm font-medium text-gray-400 mb-2">
+                                                        Number of Team Members
+                                                    </label>
+                                                    <select
+                                                        id="teamSize"
+                                                        name="teamSize"
+                                                        value={formData.teamSize}
+                                                        onChange={handleInputChange}
+                                                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
+                                                    >
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                    <p className="mt-2 text-xs text-gray-500">Minimum 3 members required for The BoardRoom.</p>
+                                                </div>
+                                            </div>
+
+                                            <RadioGroup
+                                                name="competitionInterest"
+                                                legend="Is your team interested in participating in The BoardRoom?"
+                                                options={[
+                                                    { value: 'yes', label: 'Yes – BoardRoom + Full Access (₹750 per person)' },
+                                                    { value: 'no', label: 'No – General Access only (₹599 per person)' }
+                                                ]}
+                                                selectedValue={formData.competitionInterest}
+                                                onChange={handleInputChange}
+                                            />
+
+                                            {/* POC Details */}
+                                            <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                                                <h4 className="text-sm font-medium text-gray-400 mb-4">Point of Contact Details</h4>
+
+                                                <div className="space-y-6">
+                                                    <div>
+                                                        <h5 className="font-medium text-white mb-3 text-sm">Primary POC</h5>
+                                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                                                            <InputField
+                                                                id="primaryPocName"
+                                                                label="Name"
+                                                                value={formData.primaryPocName}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                            <InputField
+                                                                id="primaryPocPhone"
+                                                                label="Phone"
+                                                                type="tel"
+                                                                value={formData.primaryPocPhone}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                            <InputField
+                                                                id="primaryPocEmail"
+                                                                label="Email"
+                                                                type="email"
+                                                                value={formData.primaryPocEmail}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="pt-4 border-t border-gray-700">
+                                                        <h5 className="font-medium text-white mb-3 text-sm">Secondary POC</h5>
+                                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                                                            <InputField
+                                                                id="secondaryPocName"
+                                                                label="Name"
+                                                                value={formData.secondaryPocName}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                            <InputField
+                                                                id="secondaryPocPhone"
+                                                                label="Phone"
+                                                                type="tel"
+                                                                value={formData.secondaryPocPhone}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                            <InputField
+                                                                id="secondaryPocEmail"
+                                                                label="Email"
+                                                                type="email"
+                                                                value={formData.secondaryPocEmail}
+                                                                onChange={handleInputChange}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </ScrollReveal>
                             )}
 
-                            {/* --- Payment Summary --- */}
-                            <div>
-                                <SectionHeader title="Total Payment Summary" />
-                                <div className="p-8 sm:p-12 bg-gray-900/70 border border-gray-700 rounded-lg">
-                                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-                                        <span className="text-3xl font-medium text-gray-300 mb-3 sm:mb-0">Amount to Pay:</span>
-                                        <span className="text-6xl font-bold text-fuchsia-400">₹{amountToPay.toLocaleString('en-IN')}</span>
+                            {/* Payment Summary */}
+                            <ScrollReveal>
+                                <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                    <SectionHeader title="Payment Summary" />
+
+                                    <div className="text-center mb-8">
+                                        <p className="text-gray-400 mb-2 text-sm">Total Amount</p>
+                                        <div className="text-4xl font-bold text-white">
+                                            ₹{amountToPay.toLocaleString('en-IN')}
+                                        </div>
                                     </div>
-                                    <p className="text-xl text-gray-400 mb-6 leading-relaxed text-center">Please pay the total amount to the UPI ID: <strong className="text-gray-200">ecell@iithyderabad.upi</strong> or scan the QR code below.</p>
-                                    <img src="https://placehold.co/224x224/111827/ffffff?text=QR+Code" alt="QR Code for payment" className="w-56 h-56 mx-auto my-6 rounded-lg" />
-                                    <div className="mt-8">
-                                        <InputField id="utrNumber" label="Enter UTR Number" placeholder="UTR123456789" value={formData.utrNumber} onChange={handleInputChange} />
+
+                                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
+                                        <div className="flex justify-center mb-4">
+                                            <div className="w-40 h-40 bg-gray-700 rounded-lg flex items-center justify-center border border-gray-600">
+                                                <img
+                                                    src="https://placehold.co/160x160/374151/9ca3af?text=QR+Code"
+                                                    alt="QR Code for payment"
+                                                    className="w-36 h-36 rounded"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <InputField
+                                        id="utrNumber"
+                                        label="UTR Transaction Number"
+                                        placeholder="Enter 12-digit UTR number"
+                                        value={formData.utrNumber}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </ScrollReveal>
+
+                            {/* Final Declarations */}
+                            <ScrollReveal>
+                                <div className="p-6 bg-gray-900 border border-gray-800 rounded-lg">
+                                    <SectionHeader title="Final Declarations" />
+                                    <div className="space-y-4">
+                                        <CheckboxField
+                                            id="confirmStudents"
+                                            label="I confirm all team members are currently enrolled students."
+                                            checked={formData.confirmStudents}
+                                            onChange={handleInputChange}
+                                        />
+                                        <CheckboxField
+                                            id="confirmPhysicalPresence"
+                                            label="I understand that participants must be physically present at IIT Hyderabad on 12th October 2025."
+                                            checked={formData.confirmPhysicalPresence}
+                                            onChange={handleInputChange}
+                                        />
+                                        {registrationType === 'team' && (
+                                            <CheckboxField
+                                                id="confirmTeamSize"
+                                                label="I understand that competition eligibility requires a team of 3–5 members."
+                                                checked={formData.confirmTeamSize}
+                                                onChange={handleInputChange}
+                                            />
+                                        )}
                                     </div>
                                 </div>
-                            </div>
+                            </ScrollReveal>
 
-                            {/* --- Final Declarations & Submit --- */}
-                            <div>
-                                <SectionHeader title="Final Declarations" />
-                                <div className="space-y-8">
-                                    <CheckboxField id="confirmStudents" label="I confirm all team members are currently enrolled students." checked={formData.confirmStudents} onChange={handleInputChange} />
-                                    <CheckboxField id="confirmPhysicalPresence" label="I understand that participants must be physically present at IIT Hyderabad on 12th October 2025." checked={formData.confirmPhysicalPresence} onChange={handleInputChange} />
-                                    {registrationType === 'team' && <CheckboxField id="confirmTeamSize" label="I understand that competition eligibility requires a team of 3–5 members." checked={formData.confirmTeamSize} onChange={handleInputChange} />}
+                            {/* Submit Button */}
+                            <ScrollReveal>
+                                <div className="text-center pb-12">
+                                    <button
+                                        type="button"
+                                        disabled={isSubmitDisabled || submissionStatus === 'submitting'}
+                                        onClick={handleSubmit}
+                                        className="bg-white text-black font-medium py-3 px-12 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                                    >
+                                        {submissionStatus === 'submitting' ? (
+                                            <span className="flex items-center">
+                                                <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Submitting...
+                                            </span>
+                                        ) : (
+                                            'Submit Registration'
+                                        )}
+                                    </button>
+
+                                    {submissionStatus === 'error' && (
+                                        <p className="mt-4 text-red-400 text-sm">
+                                            Submission failed. Please check your connection and try again.
+                                        </p>
+                                    )}
                                 </div>
-                            </div>
-
-                            <div className="pt-16">
-                                <button type="submit" disabled={isSubmitDisabled || submissionStatus === 'submitting'} className="w-full bg-fuchsia-600 text-white font-bold py-5 px-6 rounded-lg hover:bg-fuchsia-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-offset-black focus:ring-fuchsia-500 text-3xl shadow-lg shadow-fuchsia-800/20 disabled:opacity-50 disabled:cursor-not-allowed">
-                                    {submissionStatus === 'submitting' ? 'Submitting...' : 'Submit Registration'}
-                                </button>
-                                {submissionStatus === 'error' && <p className="mt-4 text-center text-lg text-red-400">Submission failed. Please check your connection and try again.</p>}
-                            </div>
-                        </form>
+                            </ScrollReveal>
+                        </div>
                     </div>
                 </div>
             </div>
