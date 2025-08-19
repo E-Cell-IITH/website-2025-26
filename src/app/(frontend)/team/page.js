@@ -3,7 +3,7 @@ import DomainHeads from "../../../components/teamComponents/DomainHeads"
 import Operations from "../../../components/teamComponents/Operations"
 import Web from "../../../components/teamComponents/Web"
 import CrF from "../../../components/teamComponents/CrF"
-import MediaAndOutreach from "../../../components/teamComponents/MeadiaOutreach"
+import DesignAndMultimedia from "../../../components/teamComponents/DesignAndMultimedia"
 import Ideation from "../../../components/teamComponents/Ideation"
 import DesignAndCreatives from "../../../components/teamComponents/DesignAndCreatives"
 import PrN from "../../../components/teamComponents/PrAndNetworking"
@@ -48,12 +48,12 @@ export default async function TeamPage() {
             <DomainHeads members={getHeads()} />
             <Operations members={filterByDomain("OPS")} />
             <CrF members={filterByDomain("CRF")} />
-            {/* <MediaAndOutreach members={filterByDomain("MEDIA_OUTREACH")} /> */}
             <Ideation members={filterByDomain("IDEATION")} />
             <Web members={filterByDomain("WEB")} />
             {/* <DesignAndCreatives members={filterByDomain("DESIGN")} /> */}
             <PrN members={filterByDomain("PRN")} />
             <Events members={filterByDomain("EVENTS")} />
+            <DesignAndMultimedia members={filterByDomain("MEDIA_OUTREACH")} /> 
         </>
     );
 }
