@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-t from-black to-[#2c003e] text-white py-12 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12">
-        
+
         {/* Quick Links */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
@@ -92,10 +92,10 @@ export default function Footer() {
           <p className="mb-2">ecell@campus.iith.ac.in</p>
           <p className="mb-4">web.ecell@campus.iith.ac.in</p>
           <ul className="space-y-1">
-            <li>(+91) 95884 78947</li>
-            <li>(+91) 90283 18842</li>
+
+
             <li>(+91) 62030 42129</li>
-            <li>(+91) 90050 58666</li>
+
           </ul>
         </div>
 
