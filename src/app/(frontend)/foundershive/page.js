@@ -7,32 +7,51 @@ import Layout from "@/components/founderhive/Layout";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
-
-
 export default async function FoundersHive() {
+  let foundersHive = { docs: [] };
+  let imagesResponse = { docs: [] };
 
+  try {
+    const payload = await getPayload({ config });
+    
+    // Fetch sessions data with error handling
+    try {
+      foundersHive = await payload.find({
+        collection: "sessions",
+        limit: 1000000000,
+      });
+    } catch (sessionError) {
+      console.error("Error fetching sessions:", sessionError);
+      foundersHive = { docs: [] };
+    }
 
-  const payload = await getPayload({ config });
+    // Fetch images data with error handling
+    try {
+      imagesResponse = await payload.find({
+        collection: "foundersHiveImages",
+        limit: 1000000,
+      });
+    } catch (imageError) {
+      console.error("Error fetching images:", imageError);
+      imagesResponse = { docs: [] };
+    }
 
-  const foundersHive = await payload.find({
-    collection: "sessions",
-    limit: 1000000000,
-  });
-
-  const imagesResponse = await payload.find({
-    collection : "foundersHiveImages",
-    limit : 1000000
-  })
-
-  console.log(imagesResponse)
+    console.log("Sessions data:", foundersHive);
+    console.log("Images data:", imagesResponse);
+    
+  } catch (error) {
+    console.error("Error initializing payload:", error);
+    // Fallback to empty data structures
+    foundersHive = { docs: [] };
+    imagesResponse = { docs: [] };
+  }
 
   return (
     <Layout>
       <HeroSection />
-      <Sessiontabs sessionsData={foundersHive.docs} />
-      {/* <UpcomingSessions /> */}
-      <StartupConcepts  />
-      <EventGallerySection galleryImages={imagesResponse.docs}  />
+      <Sessiontabs sessionsData={foundersHive?.docs || []} />
+      <StartupConcepts />
+      <EventGallerySection galleryImages={imagesResponse?.docs || []} />
       <FooterLine />
     </Layout>
   );

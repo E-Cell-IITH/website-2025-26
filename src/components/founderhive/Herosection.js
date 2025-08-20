@@ -54,7 +54,7 @@ export default function HeroSection() {
         >
           <button
             onClick={() => window.open('https://forms.gle/4eZC61f8fVBicd428')}
-            className="register-btn bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white px-12 py-4 font-semibold text-sm sm:text-base rounded-lg glow-border transition-all duration-300 mb-8 hover:bg-black"
+            className="register-btn hover:cursor-pointer bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white px-12 py-4 font-semibold text-sm sm:text-base rounded-lg glow-border transition-all duration-300 mb-8  "
           >
             <span>REGISTER HERE</span>
           </button>
@@ -115,9 +115,7 @@ export default function HeroSection() {
           box-shadow: 0 0 8px 2px #a855f7aa;
         }
 
-        .register-btn:hover {
-          background-image: none !important;
-        }
+        
       `}</style>
     </section>
   );
