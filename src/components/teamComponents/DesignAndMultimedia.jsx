@@ -1,10 +1,10 @@
 import TeamGrid from "./teamgrid";
 import { teamMembers, domainDescriptions } from "../../data/teamData";
 
-export default function MediaAndOutreach( {members} ) {
+export default function DesignAndMultimedia( {members} ) {
     return (
         <TeamGrid
-            sectionTitle="Media & Outreach"
+            sectionTitle="Design And Multimedia"
             members={members}
             description={domainDescriptions.mediaOutreach}
         />
