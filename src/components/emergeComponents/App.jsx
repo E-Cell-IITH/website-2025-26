@@ -343,7 +343,7 @@ export default function RegistrationForm() {
                                         <h3 className="font-semibold text-white mb-2 flex items-center justify-between">
                                             E-MERGE Full Access
                                             <div className="flex items-center space-x-2">
-                                                <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium line-through">₹1200</span>
+                                                <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium line-through">₹1299</span>
                                                 <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">₹799</span>
                                             </div>
                                         </h3>
