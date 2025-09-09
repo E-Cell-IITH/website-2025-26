@@ -36,8 +36,8 @@ export default async function FoundersHive() {
       imagesResponse = { docs: [] };
     }
 
-    console.log("Sessions data:", foundersHive);
-    console.log("Images data:", imagesResponse);
+    // console.log("Sessions data:", foundersHive);
+    // console.log("Images data:", imagesResponse);
     
   } catch (error) {
     console.error("Error initializing payload:", error);

@@ -90,6 +90,83 @@ const SuccessModal = ({ onClose }) => (
     </div>
 );
 
+const CountdownTimer = () => {
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isExpired, setIsExpired] = useState(false);
+
+    useEffect(() => {
+        // Set target date to 2 weeks from now
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 14);
+        targetDate.setHours(23, 59, 59, 999); // End of day
+
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+
+            if (distance < 0) {
+                setIsExpired(true);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            setTimeLeft({ days, hours, minutes, seconds });
+        };
+
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    if (isExpired) {
+        return (
+            <div className="bg-gradient-to-r from-red-900/30 to-red-800/30 border border-red-700 rounded-xl p-6 backdrop-blur-sm">
+                <div className="text-center">
+                    <h3 className="text-lg font-semibold text-red-300 mb-2">Early Bird Offer Expired</h3>
+                    <p className="text-gray-300 text-sm">Full Access now available at regular price</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 border border-yellow-700 rounded-xl p-6 backdrop-blur-sm">
+            <div className="text-center mb-4">
+                <div className="inline-flex items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <span className="text-yellow-300 font-semibold text-sm uppercase tracking-wide">Early Bird Offer</span>
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                </div>
+                <div className="flex items-center justify-center space-x-3 mb-3">
+                    <span className="text-gray-400 text-lg line-through">₹1299</span>
+                    <span className="text-2xl font-bold text-yellow-400">₹799</span>
+                    <span className="bg-yellow-400 text-black text-xs px-2 py-1 rounded-full font-bold">38% OFF</span>
+                </div>
+                <p className="text-gray-300 text-sm">Full Access with BoardRoom Competition</p>
+            </div>
+
+            <div className="grid grid-cols-4 gap-3 text-center">
+                {[
+                    { label: 'Days', value: timeLeft.days },
+                    { label: 'Hours', value: timeLeft.hours },
+                    { label: 'Min', value: timeLeft.minutes },
+                    { label: 'Sec', value: timeLeft.seconds }
+                ].map((item, index) => (
+                    <div key={index} className="bg-black/50 rounded-lg p-3 border border-gray-700">
+                        <div className="text-xl font-bold text-white">{item.value.toString().padStart(2, '0')}</div>
+                        <div className="text-xs text-gray-400 uppercase tracking-wider">{item.label}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 const ScrollReveal = ({ children, className = "" }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [ref, setRef] = useState(null);
@@ -114,8 +191,8 @@ const ScrollReveal = ({ children, className = "" }) => {
         <div
             ref={setRef}
             className={`transition-all duration-700 ${isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8'
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
                 } ${className}`}
         >
             {children}
@@ -240,6 +317,9 @@ export default function RegistrationForm() {
                     <p className="text-lg text-gray-400 mb-12 max-w-2xl">
                         12th October 2025 • Organized by E-Cell, IIT Hyderabad
                     </p>
+                    <div className="mb-12 max-w-md w-full">
+                        <CountdownTimer />
+                    </div>
                     <div className="animate-bounce">
                         <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
