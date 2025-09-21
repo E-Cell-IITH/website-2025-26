@@ -96,7 +96,7 @@ const CountdownTimer = () => {
 
     useEffect(() => {
         // Set target date to 2 weeks from now
-        const targetDate = new Date("2025-09-20T23:59:59+05:30");
+        const targetDate = new Date("2025-09-28T23:59:59+05:30");
 
         const updateTimer = () => {
             const now = new Date().getTime();
