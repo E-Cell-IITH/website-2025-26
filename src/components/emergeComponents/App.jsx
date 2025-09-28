@@ -96,7 +96,7 @@ const CountdownTimer = () => {
 
     useEffect(() => {
         // Set target date to 2 weeks from now
-       const targetDate = new Date("2025-09-28T23:59:59+05:30");
+       const targetDate = new Date("2025-09-27T23:59:59+05:30");
 
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -141,8 +141,7 @@ const CountdownTimer = () => {
                     <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 </div>
                 <div className="flex items-center justify-center space-x-3 mb-3">
-                    <span className="text-gray-400 text-lg line-through">₹2000</span>
-                    <span className="text-2xl font-bold text-yellow-400">₹1299</span>
+                    <span className="text-2xl font-bold text-yellow-400">₹1499</span>
                 </div>
                 <p className="text-gray-300 text-sm">Full Access with BoardRoom Competition</p>
             </div>
@@ -245,7 +244,7 @@ export default function RegistrationForm() {
 
     const amountToPay = useMemo(() => {
         if (registrationType === 'individual') return 799;
-        const pricePerPerson = formData.competitionInterest === 'yes' ? 1299 : 799;
+        const pricePerPerson = formData.competitionInterest === 'yes' ? 1499 : 799;
         return pricePerPerson * (parseInt(formData.teamSize, 10) || 0);
     }, [registrationType, formData.competitionInterest, formData.teamSize]);
 
@@ -340,8 +339,7 @@ export default function RegistrationForm() {
                                         <h3 className="font-semibold text-white mb-2 flex items-center justify-between">
                                             E-MERGE Full Access
                                             <div className="flex items-center space-x-2">
-                                                <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium line-through">₹2000</span>
-                                                <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">₹1299</span>
+                                                <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">₹1499</span>
                                             </div>
                                         </h3>
                                         <p className="text-gray-400 text-sm">Complete experience with BoardRoom competition, speaker sessions, workshops, and networking.</p>
@@ -497,7 +495,7 @@ export default function RegistrationForm() {
                                                 name="competitionInterest"
                                                 legend="Is your team interested in participating in The BoardRoom?"
                                                 options={[
-                                                    { value: 'yes', label: 'Yes – BoardRoom + Full Access (₹1299 per person)' },
+                                                    { value: 'yes', label: 'Yes – BoardRoom + Full Access (₹1499 per person)' },
                                                     { value: 'no', label: 'No – General Access only (₹799 per person)' }
                                                 ]}
                                                 selectedValue={formData.competitionInterest}
