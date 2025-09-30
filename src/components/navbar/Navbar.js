@@ -8,7 +8,7 @@ const navItems = [
   { label: 'E SUMMIT', href: '/esummit' },
   { label: 'STARTUP FAIR', href: '/startupfair' },
   { label: 'EMERGE', href: '/emerge' },
-  { label: 'FOUNDERS HIVE', href: '/foundershive' },
+  { label: 'FOUNDERS HIVE', href: '/ccs' },
   { label: 'MUN', href: '/mun' },
   { label: 'PARTNERS', href: '/partners' },
   { label: 'IITH STARTUPS', href: '/startups' },
