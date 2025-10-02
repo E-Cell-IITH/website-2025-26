@@ -9,6 +9,11 @@ export const SponsorshipPartners: CollectionConfig = {
       type: "text",
     },
     {
+      name : "partner_type",
+      label : "Partner Type",
+      type : "text"
+    },
+    {
       name: "images",
       label: "Partner Images",
       type: "array",

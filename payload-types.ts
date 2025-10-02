@@ -263,6 +263,7 @@ export interface FoundersHiveImage {
 export interface SponsorshipPartner {
   id: number;
   name?: string | null;
+  partner_type?: string | null;
   images?:
     | {
         image?: (number | null) | Media;
@@ -481,6 +482,7 @@ export interface FoundersHiveImagesSelect<T extends boolean = true> {
  */
 export interface SponsorshipPartnersSelect<T extends boolean = true> {
   name?: T;
+  partner_type?: T;
   images?:
     | T
     | {
