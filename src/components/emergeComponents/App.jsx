@@ -173,7 +173,7 @@ export default function RegistrationForm() {
 
     const amountToPay = useMemo(() => {
         if (registrationType === 'individual') return 799;
-        const pricePerPerson = formData.competitionInterest === 'yes' ? 1499 : 799;
+        const pricePerPerson = formData.competitionInterest === 'yes' ? 1199 : 799;
         return pricePerPerson * (parseInt(formData.teamSize, 10) || 0);
     }, [registrationType, formData.competitionInterest, formData.teamSize]);
 
@@ -268,7 +268,7 @@ export default function RegistrationForm() {
                                         <h3 className="font-semibold text-white mb-2 flex items-center justify-between">
                                             E-MERGE Full Access
                                             <div className="flex items-center space-x-2">
-                                                <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">₹1499</span>
+                                                <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">₹1199</span>
                                             </div>
                                         </h3>
                                         <p className="text-gray-400 text-sm">Complete experience with BoardRoom competition, speaker sessions, workshops, and networking.</p>
@@ -424,7 +424,7 @@ export default function RegistrationForm() {
                                                 name="competitionInterest"
                                                 legend="Is your team interested in participating in The BoardRoom?"
                                                 options={[
-                                                    { value: 'yes', label: 'Yes – BoardRoom + Full Access (₹1499 per person)' },
+                                                    { value: 'yes', label: 'Yes – BoardRoom + Full Access (₹1199 per person)' },
                                                     { value: 'no', label: 'No – General Access only (₹799 per person)' }
                                                 ]}
                                                 selectedValue={formData.competitionInterest}
