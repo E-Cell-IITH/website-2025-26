@@ -506,7 +506,7 @@ export default function RegistrationForm() {
                                         </div>
                                     </div>
 
-                                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
+                                    {/* <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
                                         <div className="flex justify-center mb-4">
                                             <div className="bg-gray-700 rounded-lg flex items-center justify-center border border-gray-600">
                                                 <img
@@ -516,7 +516,7 @@ export default function RegistrationForm() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <InputField
                                         id="utrNumber"
