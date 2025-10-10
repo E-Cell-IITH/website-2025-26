@@ -561,9 +561,7 @@ export default function RegistrationForm() {
                             <ScrollReveal>
                                 <div className="text-center pb-12">
                                     <button
-                                        type="button"
-                                        disabled={isSubmitDisabled || submissionStatus === 'submitting'}
-                                        onClick={handleSubmit}
+                                        disabled
                                         className="bg-white text-black font-medium py-3 px-12 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                     >
                                         {submissionStatus === 'submitting' ? (
