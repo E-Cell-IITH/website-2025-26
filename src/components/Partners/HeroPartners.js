@@ -44,7 +44,7 @@ export default function PartnersPage({ partnersData }) {
                     <img
                       src={partner.images[0].image.url}
                       alt={partner?.name || 'Partner'}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.parentElement.innerHTML = `

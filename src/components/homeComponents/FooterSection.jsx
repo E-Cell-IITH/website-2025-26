@@ -11,16 +11,13 @@ export default function Footer() {
           <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="hover:underline">Collaborations</Link>
+              <Link href="/partners" className="hover:underline">Collaborations</Link>
             </li>
             <li>
-              <Link href="#" className="hover:underline">Team</Link>
+              <Link href="/team" className="hover:underline">Team</Link>
             </li>
             <li>
-              <Link href="#" className="hover:underline">CA Programme</Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:underline">E-Summit</Link>
+              <Link href="/esummit" className="hover:underline">E-Summit</Link>
             </li>
           </ul>
         </div>
@@ -92,10 +89,8 @@ export default function Footer() {
           <p className="mb-2">ecell@campus.iith.ac.in</p>
           <p className="mb-4">web.ecell@campus.iith.ac.in</p>
           <ul className="space-y-1">
-
-
-            <li>(+91) 62030 42129</li>
-
+          <li>(+91) 62030 42129</li>
+          <p>For sponsorship inquiries, please reach out to Shikar Kansal at [your contact details / sponsorship email].</p>
           </ul>
         </div>
 
