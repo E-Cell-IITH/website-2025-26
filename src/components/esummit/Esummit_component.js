@@ -175,7 +175,7 @@ const events = [
     ],
     cta: {
       label: "Register Now",
-      href: "https://unstop.com/competitions/fetching-fortunes-26-e-summit-26-iit-hyderabad-1627472",
+      href: "https://ff.ecelliith.org.in",
     },
   },
 ];
