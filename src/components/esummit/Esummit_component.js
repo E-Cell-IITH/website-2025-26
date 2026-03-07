@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MapPin, Users, Calendar, Trophy, ChevronDown } from "lucide-react";
 
 function AnimatedSection({ children, className = "" }) {
@@ -25,8 +25,9 @@ function AnimatedSection({ children, className = "" }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out transform ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        } ${className}`}
+      className={`transition-all duration-700 ease-out transform ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      } ${className}`}
     >
       {children}
     </div>
@@ -180,138 +181,86 @@ const events = [
   },
 ];
 
-function EventTile({ event, index, defaultOpen }) {
-  const [open, setOpen] = useState(defaultOpen);
-  const [hovering, setHovering] = useState(false);
-  const tileRef = useRef(null);
-
-  // If opened via hash, scroll into view after mount
-  useEffect(() => {
-    if (defaultOpen && tileRef.current) {
-      setTimeout(() => {
-        tileRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 400);
-    }
-  }, [defaultOpen]);
-
-  const isOpen = open || hovering;
-
+function EventSection({ event, index }) {
   return (
-    <motion.div
-      ref={tileRef}
+    <motion.section
       id={event.id}
       initial={{ opacity: 0, y: 36 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-      onClick={() => setOpen((o) => !o)}
-      className={`rounded-3xl border cursor-pointer select-none transition-all duration-300 scroll-mt-24
-        ${isOpen
-          ? "border-purple-500/70 bg-gradient-to-br from-purple-900/30 to-black/60 shadow-[0_0_40px_rgba(168,85,247,0.2)] scale-[1.025]"
-          : "border-purple-500/20 bg-gradient-to-br from-gray-900/60 to-black/50 hover:border-purple-500/50 hover:shadow-[0_0_24px_rgba(168,85,247,0.14)] hover:scale-[1.015]"
-        }`}
+      className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-gray-900/60 to-black/50 scroll-mt-24"
     >
-      <div className="flex items-center justify-between gap-4 p-6 md:p-7">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-purple-900/40 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
-            {event.icon}
-          </div>
-          <div>
-            <h3 className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent leading-snug">
-              {event.name}
-            </h3>
-            <p className="text-xs md:text-sm text-purple-300/60 mt-0.5">{event.tagline}</p>
-          </div>
+      {/* Header */}
+      <div className="flex items-center gap-4 p-6 md:p-7">
+        <div className="w-10 h-10 rounded-xl bg-purple-900/40 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
+          {event.icon}
         </div>
-        <ChevronDown
-          className={`w-4 h-4 text-purple-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        />
+        <div>
+          <h3 className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent leading-snug">
+            {event.name}
+          </h3>
+          <p className="text-xs md:text-sm text-purple-300/60 mt-0.5">{event.tagline}</p>
+        </div>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="expanded"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 md:px-7 pb-7 pt-1 space-y-5 border-t border-purple-500/10">
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                {event.description}
-              </p>
+      {/* Body */}
+      <div className="px-6 md:px-7 pb-7 pt-1 space-y-5 border-t border-purple-500/10">
+        <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+          {event.description}
+        </p>
 
-              <div className="flex flex-wrap gap-2">
-                {event.details.map((d, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-xs text-purple-200"
-                  >
-                    <span className="text-purple-400">{d.icon}</span>
-                    {d.label}
-                  </span>
-                ))}
-              </div>
+        <div className="flex flex-wrap gap-2">
+          {event.details.map((d, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-xs text-purple-200"
+            >
+              <span className="text-purple-400">{d.icon}</span>
+              {d.label}
+            </span>
+          ))}
+        </div>
 
-              <div>
-                <p className="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-3">
-                  Timeline
+        <div>
+          <p className="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-3">
+            Timeline
+          </p>
+          <div className="space-y-4 border-l-2 border-purple-500/30 pl-4">
+            {event.timeline.map((stage, si) => (
+              <div key={si} className="relative">
+                <div className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-purple-500" />
+                <p className="text-xs font-bold text-purple-400 uppercase tracking-wide mb-1">
+                  {stage.date}
                 </p>
-                <div className="space-y-4 border-l-2 border-purple-500/30 pl-4">
-                  {event.timeline.map((stage, si) => (
-                    <div key={si} className="relative">
-                      <div className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-purple-500" />
-                      <p className="text-xs font-bold text-purple-400 uppercase tracking-wide mb-1">
-                        {stage.date}
-                      </p>
-                      <ul className="space-y-1">
-                        {stage.items.map((item, ii) => (
-                          <li key={ii} className="text-sm text-gray-300 leading-relaxed">
-                            · {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <ul className="space-y-1">
+                  {stage.items.map((item, ii) => (
+                    <li key={ii} className="text-sm text-gray-300 leading-relaxed">
+                      · {item}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {event.cta && (
-                <div onClick={(e) => e.stopPropagation()}>
-                  <a
-                    href={event.cta.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-[0_0_14px_rgba(168,85,247,0.45)] hover:shadow-[0_0_22px_rgba(168,85,247,0.7)]"
-                  >
-                    {event.cta.label} →
-                  </a>
-                </div>
-              )}
-            </div>
-          </motion.div>
+        {event.cta && (
+          <a
+            href={event.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-[0_0_14px_rgba(168,85,247,0.45)] hover:shadow-[0_0_22px_rgba(168,85,247,0.7)]"
+          >
+            {event.cta.label} →
+          </a>
         )}
-      </AnimatePresence>
-    </motion.div>
+      </div>
+    </motion.section>
   );
 }
 
 export default function Esummit() {
-  // Read the hash once on mount to determine which event to auto-open
-  const [hashId, setHashId] = useState(null);
-
-  useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) setHashId(hash);
-  }, []);
-
-  // If a hash is present, only that event is open by default; otherwise all closed
-  const isHashMode = Boolean(hashId);
-
   return (
     <div className="bg-black text-white min-h-screen">
       <section className="relative flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 overflow-hidden">
@@ -363,21 +312,11 @@ export default function Esummit() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent mb-3">
             Events
           </h2>
-          <p className="text-sm text-purple-300/50 tracking-widest uppercase">
-            Hover or tap a tile to explore
-          </p>
         </AnimatedSection>
 
         <div className="space-y-4">
           {events.map((event, idx) => (
-            <EventTile
-              key={event.id}
-              event={event}
-              index={idx}
-              // In hash mode: only the matching event opens by default
-              // In normal mode: all start closed
-              defaultOpen={isHashMode ? event.id === hashId : false}
-            />
+            <EventSection key={event.id} event={event} index={idx} />
           ))}
         </div>
       </section>
