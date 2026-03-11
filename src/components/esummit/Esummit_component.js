@@ -98,7 +98,7 @@ const events = [
       { icon: <MapPin className="w-4 h-4" />, label: "IIT Hyderabad, Sangareddi" },
       { icon: <Users className="w-4 h-4" />, label: "Startups & Students" },
     ],
-    cta: { label: "Register Now", href: "https://forms.gle/cmcfW8qRTgMYX4a6A" },
+    cta: { label: "Register Now", href: "https://www.f6s.com/startup-fair-26/apply" },
   },
   {
     id: "ceo-summit",
