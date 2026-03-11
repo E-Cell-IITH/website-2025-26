@@ -89,8 +89,7 @@ export default function Footer() {
           <p className="mb-2">ecell@campus.iith.ac.in</p>
           <p className="mb-4">web.ecell@campus.iith.ac.in</p>
           <ul className="space-y-1">
-          <li>(+91) 62030 42129</li>
-          <p>For sponsorship inquiries, please reach out to Shikar Kansal at [your contact details / sponsorship email].</p>
+          <p>For sponsorship inquiries, please reach out to Shikar Kansal at (+91) 62030 42129.</p>
           </ul>
         </div>
 
